@@ -1,0 +1,22 @@
+<div class="background">
+ <div class="login">
+  <div class="login-logo">
+    <img src="../../../../assets/images/login-logo.png" alt="" width="150px">
+  </div>
+  <div class="login-form">
+      <div class="login-title">
+        <h1>Welcome!</h1>
+      </div>
+     <input type="text" placeholder="Username" style="outline: none;" [(ngModel)]="userName">
+     <input type="password" placeholder="Password" style="outline: none;" [(ngModel)]="pwd">
+     <div class="info-toggle">
+       <p>Lưu thông tin đăng nhập</p>
+       <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+     </div>
+     <div class="login-button">
+      <button (click)="login();">Đăng nhập</button>
+      <p>Quên mật khẩu ?</p>
+     </div>
+  </div>
+ </div>
+</div>

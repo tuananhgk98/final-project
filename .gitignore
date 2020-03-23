@@ -9,8 +9,6 @@
 
 # dependencies
 /node_modules
-/angular.json
-/tsonfig.json
 
 # profiling files
 chrome-profiler-events*.json

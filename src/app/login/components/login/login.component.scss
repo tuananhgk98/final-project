@@ -2,12 +2,14 @@ div {
   cursor: pointer;
 }
 .background {
-  background-image: url(https://civie-media-files.s3.ap-southeast-1.amazonaws.com/D74AB36C-857C-4B80-B83F-F786B895B128-login-bg.png?X-Amz-Expires=900&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAYF633TVF27IVILHI/20200320/ap-southeast-1/s3/aws4_request&X-Amz-Date=20200320T040840Z&X-Amz-SignedHeaders=host&X-Amz-Signature=2b74d19ee69f2407e6e8a75d80b440842913b2d5fe69caac288e4af2e9fbea5b);
+  background-image: url(../../../../assets/images/login-bg.jpg);
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 100vh;
-  padding: 30px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 .login {
   width: 25%;
@@ -17,18 +19,17 @@ div {
   align-items: center;
   flex-direction: column;
   margin-left: 120px;
+  background: #000000;
+  background: rgba(0,0,0, 0.4);
 }
 .login-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
-  height: 65%;
+  height: 75%;
   margin-top: 20px;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.4);
-  border-radius: 45px 45px 45px 0;
   padding: 30px;
   color: white;
 }
@@ -40,15 +41,15 @@ div {
   display: contents;
 }
 input {
-  border: 1px solid white;
+  border: 1px solid;
   width: 100%;
-  border-radius: 45px;
   background: none;
   color: white;
   padding:10px;
   transition: all ease-in-out 0.3s;
   &::placeholder {
     color: white; 
+    font-weight: 600;
   }
   &:hover {
     box-shadow:  5px 4px 10px white;
@@ -110,14 +111,14 @@ label:active:after {
   width: 100%;
   height: 24%;
 }
-.login-button button {
-  width: 55%;
+ button {
+  width: 50%;
   height: 40px;
   background-color: white;
   border: 1px solid white;
-  border-radius: 45px;
   font-size: 20px;
   transition: all ease-in-out 0.3s;
+  margin-top: 20px;
   &:hover {
     background: none;
     color:white ;
@@ -127,6 +128,39 @@ label:active:after {
 .login-button p:hover {
   text-decoration: underline;
   transition: all ease-in-out 0.5s;
+}
+
+.social-login {
+  width: 100%;
+  button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+  .fb-login {
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    border: none;
+    color: white;
+
+  }
+  .gg-login {
+    background-color: orangered;
+    border-radius: 5px;
+    border: none;
+    color: white;
+  }
+}
+
+.register {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  top: 100px;
+  p{
+    display: inline;
+  }
 }
 
 @media only screen and (max-width: 1360px) {

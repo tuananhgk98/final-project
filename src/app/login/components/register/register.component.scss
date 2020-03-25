@@ -1,0 +1,190 @@
+div {
+  cursor: pointer;
+}
+.background {
+  background-image: url(../../../../assets/images/login-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.login {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 120px;
+  background: #000000;
+  background: rgba(0,0,0, 0.4);
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 75%;
+  margin-top: 20px;
+  padding: 30px;
+  color: white;
+}
+.login-title h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.login-form form {
+  display: contents;
+}
+input {
+  border: 1px solid;
+  width: 100%;
+  background: none;
+  color: white;
+  padding:10px;
+  transition: all ease-in-out 0.3s;
+  &::placeholder {
+    color: white; 
+    font-weight: 600;
+  }
+  &:hover {
+    box-shadow:  5px 4px 10px white;
+    transition: all ease-in-out 0.3s;
+  }
+}
+.info-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+  width: 15%;
+  height: 20px;
+	border: 1px solid white;
+	display: block;
+	border-radius: 100px;
+  position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+  left: 0px;
+	width: 18px;
+	height: 18px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+input:checked + label {
+	background: gray;
+}
+
+input:checked + label:after {
+	left: calc(100%);
+  transform: translateX(-100%);
+  background: deepskyblue;
+}
+
+label:active:after {
+	width: 30%;
+}
+.login-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 24%;
+}
+ button {
+  width: 50%;
+  height: 40px;
+  background-color: white;
+  border: 1px solid white;
+  font-size: 20px;
+  transition: all ease-in-out 0.3s;
+  margin-top: 20px;
+  &:hover {
+    background: none;
+    color:white ;
+    transition: all ease-in-out 0.3s;
+  }
+}
+.login-button p:hover {
+  text-decoration: underline;
+  transition: all ease-in-out 0.5s;
+}
+
+.social-login {
+  width: 100%;
+  button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+  .fb-login {
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    border: none;
+    color: white;
+
+  }
+  .gg-login {
+    background-color: orangered;
+    border-radius: 5px;
+    border: none;
+    color: white;
+  }
+}
+
+.register {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  top: 100px;
+  p{
+    display: inline;
+  }
+}
+
+@media only screen and (max-width: 1360px) {
+.login {
+  width: 35%;
+}
+}
+// ipad
+@media only screen and (max-width: 768px) {
+.login {
+  width: 80%;
+  margin-left: 60px;
+}
+label {
+  width: 10%;
+}
+}
+// iphone
+@media only screen and (max-width: 376px) {
+.login {
+  width: 100%;
+  margin-left: 0px;
+}
+label {
+  width: 20%;
+}
+}

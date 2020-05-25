@@ -2,23 +2,25 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { env } from '../../shared/environment/environment';
+import { StoreService } from '../../shared/services/store.service';
+
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class LoginService {
-    constructor(private _http: HttpClient) { }
+    constructor(
+        private http: HttpClient,
+        private storeService: StoreService
+    ) { }
 
-    public login(username: string, pwd: string): Observable<any> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/x-www-form-urlencoded'
-            })
-        };
+    private login(body: object): Observable<any> {
+        return this.http.post(`${env.apiUrl}/user/login`, body);
+    }
 
-        return this._http.post<any>('Token',
-            'grant_type=password&username=' + username + '&password=' + pwd,
-            httpOptions);
+    private register(body: object): Observable<any> {
+        return this.http.post(`${env.apiUrl}/register`, body);
     }
 }

@@ -1,41 +1,37 @@
-import { Component, OnInit, ViewContainerRef,ViewChild} from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
 
 //service
 import { LoginService } from '../../services/login.service';
-import { AlertService } from '../../../shared/services/alert.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-   
+
   constructor(
     private loginService: LoginService,
-    private alertService: AlertService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
+  ) {
+    this.loginForm = this.formBuilder.group({
+      userName: ['', Validators.required],
+      pwd: ['', Validators.required]
+    });
+  }
 
-  userName: string = '';
-  pwd: string = '';
+  loginForm: FormGroup;
   fullName = '';
+  isLoading = true;
 
-  ngOnInit(): void {
+  login() {
+    console.log(this.loginForm.value);
+    this.snackBar.open('Xin chao', 'Bo qua', { duration: 3000 });
   }
-
-  login() : void {
-    this.loginService.login(this.userName, this.pwd).subscribe((data: any) => {
-      this.fullName = data.FullName;
-      localStorage.setItem('access_token', data.access_token);
-      localStorage.setItem('access_user', JSON.stringify(data));
-      this.router.navigateByUrl('/pages/home');
-    }, null, () => this.alertService.changeMessage({
-      color: 'green',
-      text: `Xin chào ${this.fullName}`
-    }));
-  }
-
 }

@@ -1,29 +1,42 @@
-<div class="background">
-  <div class="login">
-    <div class="login-logo">
-      <img src="../../../../assets/images/login-logo.png" alt="" width="150px">
-    </div>
-    <div class="login-form">
-      <div class="login-title">
-        <h1>Welcome!</h1>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="background">
+    <div class="login">
+      <div class="login-logo">
+        <img src="../../../../assets/images/login-logo.png" alt="" width="150px">
       </div>
-      <input type="text" placeholder="Username" style="outline: none;" [(ngModel)]="userName">
-      <input type="password" placeholder="Password" style="outline: none;" [(ngModel)]="pwd">
-      <div class="info-toggle">
-        <p>Lưu thông tin đăng nhập</p>
-        <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
-      </div>
-      <div class="login-button">
-        <button (click)="login();">Đăng nhập</button>
-        <p>Quên mật khẩu ?</p>
-      </div>
-      <div class="social-login">
-        <button class="fb-login"><i class="fab fa-facebook-f"></i>Login with Facebook</button>
-        <button class="gg-login"><i class="fab fa-google"></i> Login with Google</button>
-      </div>
-      <div class="register">
-        <a routerLink="/login/register" >Đăng ký</a> <p> nếu chưa có tài khoản</p>
+      <div class="login-form">
+        <div class="login-title">
+          <h1>Welcome!</h1>
+        </div>
+        <input type="text" placeholder="Username" style="outline: none;" formControlName="userName">
+        <div class="d-flex justify-content-start">
+          <mat-error *ngIf="loginForm.get('userName').hasError('required')" class="font-12">
+            Trường bắt buộc</mat-error>
+        </div>
+        <input type="password" placeholder="Password" style="outline: none;" formControlName="pwd">
+        <div class="d-flex justify-content-start">
+          <mat-error *ngIf="loginForm.get('pwd').hasError('required')" class="font-12">
+            Trường bắt buộc</mat-error>
+        </div>
+        <div class="info-toggle">
+          <p>Lưu thông tin đăng nhập</p>
+          <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+        </div>
+        <div class="login-button">
+          <button matButton color="primary" [disabled]="loginForm.invalid">Đăng nhập
+            <i class="fa fa-spinner fa-spin m-r-5" *ngIf="isLoading"></i>
+          </button>
+          <p>Quên mật khẩu ?</p>
+        </div>
+        <div class="social-login">
+          <button class="fb-login"><i class="fab fa-facebook-f"></i>Login with Facebook</button>
+          <button class="gg-login"><i class="fab fa-google"></i> Login with Google</button>
+        </div>
+        <div class="register">
+          <a routerLink="/login/register">Đăng ký</a>
+          <p> nếu chưa có tài khoản</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>

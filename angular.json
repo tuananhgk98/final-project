@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ERP": {
+    "CodersX": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ERP",
+            "outputPath": "dist/CodersX",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -70,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ERP:build"
+            "browserTarget": "CodersX:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ERP:build:production"
+              "browserTarget": "CodersX:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ERP:build"
+            "browserTarget": "CodersX:build"
           }
         },
         "test": {
@@ -119,18 +119,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ERP:serve"
+            "devServerTarget": "CodersX:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ERP:serve:production"
+              "devServerTarget": "CodersX:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "ERP",
+  "defaultProject": "CodersX",
   "cli": {
     "analytics": false
   }

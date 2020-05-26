@@ -10,13 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '../app/shared/shared.module';
 
 //interceptor
-import { LoaderService } from './shared/services/loader.service';
-import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
 import { APIInterceptor } from './shared/interceptors/api.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
-
-import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -26,8 +22,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule,
-    MatTabsModule
+    SharedModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
@@ -36,8 +31,6 @@ import {MatTabsModule} from '@angular/material/tabs';
       useClass: APIInterceptor,
       multi: true
     },
-    LoaderService,
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

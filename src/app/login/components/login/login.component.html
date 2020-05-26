@@ -1,22 +1,35 @@
-<div class="background">
-  <div class="login">
-    <div class="login-logo">
-      <img src="../../../../assets/images/login-logo.png" alt="" width="150px">
-    </div>
-    <div class="login-form">
-      <div class="login-title">
-        <h1>Welcome!</h1>
+<form [formGroup]="loginForm">
+  <div class="background">
+    <div class="login">
+      <div class="login-logo">
+        <img src="../../../../assets/images/login-logo.png" alt="" width="150px">
       </div>
-      <input type="text" placeholder="Username" style="outline: none;" [(ngModel)]="userName">
-      <input type="password" placeholder="Password" style="outline: none;" [(ngModel)]="pwd">
-      <div class="login-button ">
-        <button class="btn btn-primary" (click)="login();">Đăng nhập</button>
-        <p>Quên mật khẩu ?</p>
-      </div>
-      <div class="register">
-        <a routerLink="/login/register">Đăng ký</a>
-        <p> nếu chưa có tài khoản</p>
+      <div class="login-form">
+        <div class="login-title">
+          <h1>Welcome!</h1>
+        </div>
+        <input type="text" placeholder="Username" style="outline: none;" formControlName="userName">
+        <div class="d-flex justify-content-start">
+          <mat-error *ngIf="loginForm.get('userName').hasError('required')" class="font-12">
+            Trường bắt buộc</mat-error>
+        </div>
+        <input type="password" placeholder="Password" style="outline: none;" formControlName="pwd">
+        <div class="d-flex justify-content-start">
+          <mat-error *ngIf="loginForm.get('pwd').hasError('required')" class="font-12">
+            Trường bắt buộc</mat-error>
+        </div>
+        <!-- <div class="login-button">
+          <button matButton type="submit" color="primary" [disabled]="loginForm.invalid">Đăng nhập
+            <i class="fa fa-spinner fa-spin m-r-5" *ngIf="isLoading"></i>
+          </button>
+          <p>Quên mật khẩu ?</p>
+        </div> -->
+        <button (click)="login()">login</button>
+        <div class="register">
+          <a routerLink="/login/register">Đăng ký</a>
+          <p> nếu chưa có tài khoản</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>

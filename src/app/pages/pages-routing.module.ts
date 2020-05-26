@@ -9,9 +9,15 @@ const routes: Routes = [
     path: '',
     component: PagesComponent,
     children: [
+
+      {
+        path: 'course',
+        loadChildren: () => import('./course/course.module')
+          .then(m => m.CourseModule)
+      },
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'course',
         pathMatch: 'full',
       }
     ]

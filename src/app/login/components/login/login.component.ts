@@ -1,41 +1,45 @@
-import { Component, OnInit, ViewContainerRef,ViewChild} from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
 
 //service
 import { LoginService } from '../../services/login.service';
-import { AlertService } from '../../../shared/services/alert.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-   
+
   constructor(
     private loginService: LoginService,
-    private alertService: AlertService,
-    private router: Router
-  ) { }
-
-  userName: string = '';
-  pwd: string = '';
-  fullName = '';
-
-  ngOnInit(): void {
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
+  ) {
+    this.loginForm = this.formBuilder.group({
+      userName: ['', Validators.required],
+      pwd: ['', Validators.required]
+    });
   }
 
-  login() : void {
-    this.loginService.login(this.userName, this.pwd).subscribe((data: any) => {
-      this.fullName = data.FullName;
-      localStorage.setItem('access_token', data.access_token);
-      localStorage.setItem('access_user', JSON.stringify(data));
-      this.router.navigateByUrl('/pages/home');
-    }, null, () => this.alertService.changeMessage({
-      color: 'green',
-      text: `Xin chào ${this.fullName}`
-    }));
-  }
+  loginForm: FormGroup;
+  name = '';
+  isLoading: boolean;
 
+  login() {
+    this.isLoading = true;
+    this.loginService.login(this.loginForm.value).pipe(
+      finalize(() => this.isLoading = false)
+    ).subscribe(res => {
+      if (res.ok) {
+        this.router.navigateByUrl('/pages/course');
+        this.snackBar.open('Xin chào', res.name, { duration: 3000 })
+      }
+    });
+  }
 }

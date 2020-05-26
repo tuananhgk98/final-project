@@ -1,0 +1,69 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    background: #f6f9fa;
+    padding: 15px;
+    font-family: sans-serif;
+  }
+  
+  .route__title, .list__title {
+    color: #9a97b7;
+  }
+  
+  .route__info, .list__des {
+    margin-top: 10px;
+    background: #ffffff;
+    box-shadow: 5px 5px 10px #d9d9d9;
+    padding: 20px;
+  }
+  
+  .route__info div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .route__btn {
+    background: #007be8;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 13.5px;
+    border: none;
+    border-radius: 5px;
+    width : 100px;
+  }
+  
+  .course__list {
+    margin-top: 30px;
+  }
+  
+  .des__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .des__body>* {
+    margin: 15px 0;
+  }
+  
+  .des__body h1 {
+    color: #9a97b7;
+  }
+  
+  .author {
+    display: flex;
+    align-items: center;
+  }
+  
+  .author img {
+    border-radius: 50%;
+  }
+  
+  .author p {
+    color: #9a97b7;
+    margin-left: 5px;
+  }

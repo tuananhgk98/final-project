@@ -5,6 +5,7 @@ import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -27,11 +28,18 @@ export class LoginComponent {
   }
 
   loginForm: FormGroup;
-  fullName = '';
-  isLoading = true;
+  name = '';
+  isLoading: boolean;
 
   login() {
-    console.log(this.loginForm.value);
-    this.snackBar.open('Xin chao', 'Bo qua', { duration: 3000 });
+    this.isLoading = true;
+    this.loginService.login(this.loginForm.value).pipe(
+      finalize(() => this.isLoading = false)
+    ).subscribe(res => {
+      if (res.ok) {
+        this.router.navigateByUrl('/pages/course');
+        this.snackBar.open('Xin chào', res.name, { duration: 3000 })
+      }
+    });
   }
 }

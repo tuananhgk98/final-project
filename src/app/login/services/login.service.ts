@@ -16,11 +16,11 @@ export class LoginService {
         private storeService: StoreService
     ) { }
 
-    private login(body: object): Observable<any> {
-        return this.http.post(`${env.apiUrl}/user/login`, body);
+    login(body: any): Observable<any> {
+        return this.http.post<any>(`login/test`, body);
     }
 
-    private register(body: object): Observable<any> {
+    register(body: object): Observable<any> {
         return this.http.post(`${env.apiUrl}/register`, body);
     }
 }

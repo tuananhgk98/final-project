@@ -5,9 +5,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
-
+import { HeaderComponent } from '../shared/components/header/header.component';
+import { UserComponent } from '../shared/components/user/user.component';
 @NgModule({
-  declarations: [],
+  declarations: [HeaderComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -20,7 +21,8 @@ import { MaterialModule } from '../material/material.module';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    HeaderComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

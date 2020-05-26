@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+<form [formGroup]="loginForm">
   <div class="background">
     <div class="login">
       <div class="login-logo">
@@ -22,12 +22,13 @@
           <p>Lưu thông tin đăng nhập</p>
           <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
         </div>
-        <div class="login-button">
-          <button matButton color="primary" [disabled]="loginForm.invalid">Đăng nhập
+        <!-- <div class="login-button">
+          <button matButton type="submit" color="primary" [disabled]="loginForm.invalid">Đăng nhập
             <i class="fa fa-spinner fa-spin m-r-5" *ngIf="isLoading"></i>
           </button>
           <p>Quên mật khẩu ?</p>
-        </div>
+        </div> -->
+        <button (click)="login()">login</button>
         <div class="social-login">
           <button class="fb-login"><i class="fab fa-facebook-f"></i>Login with Facebook</button>
           <button class="gg-login"><i class="fab fa-google"></i> Login with Google</button>

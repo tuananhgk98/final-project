@@ -1,0 +1,103 @@
+* {
+  font-weight: 100;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h3,
+h4 {
+  color: gray;
+}
+
+h1 {
+  color: #077be8;
+}
+
+.lesson-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  box-shadow: 5px 5px 10px #d9d9d9;
+  background: #f6f9fa;
+}
+
+.lesson-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.practice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+.practice-page {
+  background: rgba($color: #000000, $alpha: 0.9);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-start;
+  .code-header ul {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background: #33485f;
+    list-style: none;
+    li {
+      color: #f6f9fa;
+      font-weight: 600;
+    }
+  }
+  .code-area {
+    width: 75%;
+    p {
+      color: #f6f9fa;
+    }
+  }
+  .test-case {
+    height: 100%;
+    background: #1a232c;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-start;
+    h1 {
+      padding: 20px;
+      color: #f6f9fa;
+      background: #212b36;
+    }
+    .test {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      .test-result {
+        width: 100%;
+        margin: 10px;
+        padding: 10px;
+        color: #f6f9fa;
+        background: #212b36;
+        h4 {
+          margin: 0;
+        }
+      }
+    }
+    .test-footer {
+      padding: 20px;
+      color: #f6f9fa;
+      background-color: #212b36;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

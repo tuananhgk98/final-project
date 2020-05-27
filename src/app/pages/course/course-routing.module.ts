@@ -14,11 +14,13 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: CourseDetailComponent
-  },
-  {
-    path: ':id/lessons',
-    component: LessonsComponent
+    component: CourseDetailComponent,
+    children: [
+      {
+        path: 'lesson/:lessonId',
+        component: LessonsComponent
+      }
+    ]
   }
 ];
 

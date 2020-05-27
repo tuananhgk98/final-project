@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm">
+<form [formGroup]="loginForm" (ngSubmit)="login()">
   <div class="background">
     <div class="login">
       <div class="login-logo">
@@ -18,13 +18,13 @@
           <mat-error *ngIf="loginForm.get('pwd').hasError('required')" class="font-12">
             Trường bắt buộc</mat-error>
         </div>
-        <!-- <div class="login-button">
+        <div class="login-button">
           <button matButton type="submit" color="primary" [disabled]="loginForm.invalid">Đăng nhập
             <i class="fa fa-spinner fa-spin m-r-5" *ngIf="isLoading"></i>
           </button>
           <p>Quên mật khẩu ?</p>
-        </div> -->
-        <button class="btn btn-primary" (click)="login()">Đăng nhập</button>
+        </div>
+        <!-- <button class="btn btn-primary" (click)="login()">Đăng nhập</button> -->
         <div class="register">
           <a routerLink="/login/register">Đăng ký</a>
           <p> nếu chưa có tài khoản</p>

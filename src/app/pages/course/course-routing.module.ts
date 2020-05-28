@@ -15,12 +15,10 @@ const routes: Routes = [
   {
     path: ':id',
     component: CourseDetailComponent,
-    children: [
-      {
-        path: 'lesson/:lessonId',
-        component: LessonsComponent
-      }
-    ]
+  },
+  {
+    path: ':id/lesson/:lessonId',
+    component: LessonsComponent
   }
 ];
 

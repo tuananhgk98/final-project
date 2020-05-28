@@ -17,15 +17,14 @@
   <div class="code-area">
     <div class="code-header">
       <ul>
-        <li> <i class="fas fa-arrow-left"></i> Quay lại</li>
+        <li> <a style="cursor: pointer;" (click)="goBack()"><i class="fas fa-arrow-left"></i> Quay lại</a></li>
         <li>Bài 1</li>
         <li> Học lập trình miễn phí với coderX</li>
       </ul>
     </div>
     <div>Code tai day
-
-
       <!-- phan code o day nhe -->
+      <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
     </div>
   </div>
   <div class="test-case">

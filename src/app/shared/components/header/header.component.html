@@ -2,8 +2,8 @@
     <div class="main">
         <img src="../../../../assets/images/login-logo.png" width="200px" alt="">
         <ul class="nav-menu">
-            <li [ngClass]="isActive == true ? 'li-active' : ''" (click)="changeStyle()">Trang chủ</li>
-            <li>Khoá học</li>
+            <li [ngClass]="routeSnapshot.includes('home') ? 'li-active' : ''">Trang chủ</li>
+            <li [ngClass]="routeSnapshot.includes('course') ? 'li-active' : ''" routerLink="/pages/course">Khoá học</li>
             <li>MentorX</li>
             <li>Bạn bè</li>
         </ul>

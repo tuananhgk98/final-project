@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isActive: boolean = false;
-  constructor() { }
+  routeSnapshot: string[];
+
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.routeSnapshot = window.location.href.split('/');
+    console.log(this.routeSnapshot);
   }
-  changeStyle() {
-    this.isActive = true;
-  }
+
 }

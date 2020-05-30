@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 //component
 import { PagesComponent } from './pages.component';
+import { UserInfoComponent } from '../shared/components/user/user-info/user-info.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
           .then(m => m.CourseModule)
       },
 
+      {
+        path: 'my-info',
+        component: UserInfoComponent
+      },
       {
         path: '',
         redirectTo: 'course',

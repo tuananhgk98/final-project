@@ -1,4 +1,38 @@
 .header-container {
-    width : 100%;
-    background-color : #FFFFFF;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 5px 5px 10px #d9d9d9;
+}
+.main {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+.nav-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    li {
+        cursor: pointer;
+        position: relative;
+        padding-bottom: 15px;
+        &:hover {
+            color: #007be8;
+        }
+    }
+    .li-active::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: red;
+        bottom: 0;
+        left: 0;
+        transition: width 0.6s ease;
+    }
 }

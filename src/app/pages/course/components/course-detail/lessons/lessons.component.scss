@@ -60,6 +60,12 @@ h1 {
     p {
       color: #f6f9fa;
     }
+    .code-body {
+      height: 80%;
+      & > * {
+        height: 100%;
+      }
+    }
   }
   .test-case {
     height: 100%;
@@ -103,5 +109,4 @@ h1 {
 }
 
 ::host ::ng-deep ngx-monaco-editor {
-
 }

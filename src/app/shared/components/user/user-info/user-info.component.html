@@ -1,0 +1,112 @@
+<div class="profile">
+  <div class="profile-info">
+    <h3>Thông tin cá nhân</h3>
+    <div class="avatar">
+      <img src="https://lh3.googleusercontent.com/a-/AAuE7mBi0PdaRt7dtsUqKXX8aJBmtXwKRveWdjUA-PAl" alt="" width="100px">
+    </div>
+    <div class="info">
+      <div class="input-group">
+        <label for="">Họ và tên</label>
+        <input type="text" placeholder="Name">
+      </div>
+      <div class="input-group">
+        <label for="">Email</label>
+        <input type="email" placeholder="Your Email">
+      </div>
+      <div class="input-group">
+        <label for="">Số điện thoại</label>
+        <input type="number" placeholder="Phone Number">
+      </div>
+      <div class="input-group">
+        <label for="">Ngày sinh</label>
+        <input type="text" placeholder="Date of birth">
+      </div>
+      <div class="input-group">
+        <label for="">Thành phố</label>
+        <input type="text" placeholder="City">
+      </div>
+      <div class="input-group">
+        <label for="">Github URL</label>
+        <input type="text" placeholder="URL">
+      </div>
+      <button class="btn btn-primary" type="button">Lưu</button>
+    </div>
+    <div class="change-pwd">
+      <h5>Đổi mật khẩu</h5>
+      <div class="input-group">
+        <label for="">Mật khẩu mới</label>
+        <input type="text" placeholder="Enter password">
+      </div>
+      <button class="btn btn-primary" type="button">Đổi</button>
+    </div>
+  </div>
+  <div class="profile-schools">
+    <div class="add-info">
+      <h4>Các trường đã học</h4>
+      <div *ngIf="showSchoolInfo">
+        <div class="input-group">
+          <label for="">Tên Trường</label>
+          <input type="text" placeholder="...">
+        </div>
+        <div class="input-group">
+          <label for="">Chuyên ngành</label>
+          <input type="text" placeholder="...">
+        </div>
+        <div class="input-group">
+          <label for="">Cấp học</label>
+          <input type="text" placeholder="...">
+        </div>
+        <div class="input-group">
+          <label for="">Năm tốt nghiệp</label>
+          <input type="text" placeholder="...">
+        </div>
+      </div>
+      <button class="btn btn-primary" type="button" (click)="showSchoolInfo= true">Thêm</button>
+      <div class="group-btn" *ngIf="showSchoolInfo">
+        <button class="btn btn-primary" type="button">Lưu</button>
+        <button class="btn btn-light" type="button" (click)="showSchoolInfo= false">Huỷ</button>
+      </div>
+    </div>
+    <div class="add-info">
+      <h4>Các project đã làm</h4>
+      <div *ngIf="showProject">
+        <div class="input-group">
+          <label for="">Tên Project</label>
+          <input type="text" placeholder="...">
+        </div>
+        <div class="input-group">
+          <label for="">URL</label>
+          <input type="text" placeholder="URL">
+        </div>
+        <div class="input-group">
+          <label for="">Mô tả</label>
+          <input type="text" placeholder="...">
+        </div>
+      </div>
+      <button class="btn btn-primary" type="button" (click)="showProject = true">Thêm</button>
+      <div class="group-btn" *ngIf="showProject">
+        <button class="btn btn-primary" type="button">Lưu</button>
+        <button class="btn btn-light" type="button" (click)="showProject = false">Huỷ</button>
+      </div>
+    </div>
+    <div class="add-info">
+      <h4>Skills</h4>
+      <div *ngIf="showSkill">
+        <div class="input-group">
+          <label for="">Tên skill</label>
+          <input type="text" placeholder="...">
+        </div>
+        <div class="input-group">
+          <label for="">Số năm kinh nghiệm</label>
+          <input type="text" placeholder="...">
+        </div>
+      </div>
+      <button class="btn btn-primary" type="button" (click)="showSkill = true">Thêm</button>
+      <div class="group-btn" *ngIf="showSkill">
+        <button class="btn btn-primary" type="button">Lưu</button>
+        <button class="btn btn-light" type="button" (click)="showSkill = false">Huỷ</button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -7,8 +7,9 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { UserComponent } from '../shared/components/user/user.component';
+import { UserInfoComponent } from './components/user/user-info/user-info.component';
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, UserComponent, UserInfoComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -22,7 +23,8 @@ import { UserComponent } from '../shared/components/user/user.component';
     HttpClientModule,
     FormsModule,
     MaterialModule,
-    HeaderComponent
+    HeaderComponent,
+    UserComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

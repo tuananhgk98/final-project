@@ -1,22 +1,12 @@
-<div class="profile">
-  <div class="profile-info">
-    <h3>Thông tin cá nhân</h3>
-    <div class="avatar">
-      <img src="https://lh3.googleusercontent.com/a-/AAuE7mBi0PdaRt7dtsUqKXX8aJBmtXwKRveWdjUA-PAl" alt="" width="100px">
-    </div>
-  </div>
-  <div class="profile-schools">
-    <div class="add-info">
-      <h4>Các trường đã học</h4>
-      <button class="btn btn-primary" type="button">Thêm</button>
-    </div>
-    <div class="add-info">
-      <h4>Các project đã làm</h4>
-      <button class="btn btn-primary" type="button">Thêm</button>
-    </div>
-    <div class="add-info">
-      <h4>Skills</h4>
-      <button class="btn btn-primary" type="button">Thêm</button>
-    </div>
-  </div>
+<div class="user">
+  <img src="https://lh3.googleusercontent.com/a-/AAuE7mBi0PdaRt7dtsUqKXX8aJBmtXwKRveWdjUA-PAl" alt="" width="100%"
+    [matMenuTriggerFor]="menu">
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item style="outline: none;" routerLink="">
+      <mat-icon>account_circle</mat-icon> Trang cá nhân
+    </button>
+    <button mat-menu-item style="outline: none;">
+      <mat-icon>exit_to_app</mat-icon> Đăng xuất
+    </button>
+  </mat-menu>
 </div>

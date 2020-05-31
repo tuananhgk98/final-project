@@ -4,4 +4,4 @@ html, body { height: 100%; }
 body { margin: 0;
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
-button{ outline: none;}
+::ng-deep button{ outline: none;}

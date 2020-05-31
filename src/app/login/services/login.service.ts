@@ -17,10 +17,10 @@ export class LoginService {
     ) { }
 
     login(body: any): Observable<any> {
-        return this.http.post<any>(`login/test`, body);
+        return this.http.post<any>(`login`, body);
     }
 
     register(body: object): Observable<any> {
-        return this.http.post(`${env.apiUrl}/register`, body);
+        return this.http.post(`${env.apiUrl}register`, body);
     }
 }

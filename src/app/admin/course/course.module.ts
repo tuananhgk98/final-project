@@ -1,18 +1,17 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { SharedModule } from '../../shared/shared.module';
 import { CourseRoutingModule } from './course-routing.module';
+
 import { CourseListComponent } from './components/course-list/course-list.component';
-import { CourseDetailComponent } from './components/course-detail/course-detail.component';
-import { LessonsComponent } from './components/course-detail/lessons/lessons.component';
-import { FormsModule } from '@angular/forms';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { CourseCreateComponent } from './components/course-create/course-create.component';
+
 @NgModule({
-  declarations: [CourseListComponent, CourseDetailComponent, LessonsComponent],
+  declarations: [CourseListComponent, CourseCreateComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,
-    MonacoEditorModule.forRoot()
+    SharedModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

@@ -36,10 +36,8 @@ export class LoginComponent {
     this.loginService.login(this.loginForm.value).pipe(
       finalize(() => this.isLoading = false)
     ).subscribe(res => {
-      if (res.ok) {
-        this.router.navigateByUrl('/pages/course');
-        this.snackBar.open('Xin chào', res.name, { duration: 3000 })
-      }
+      this.router.navigateByUrl('/pages/course');
+      this.snackBar.open(`Xin chào ${res.data.name}`, 'Bỏ qua', { duration: 3000 })
     });
   }
 }

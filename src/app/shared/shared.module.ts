@@ -8,8 +8,9 @@ import { MaterialModule } from '../material/material.module';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { UserComponent } from '../shared/components/user/user.component';
 import { UserInfoComponent } from './components/user/user-info/user-info.component';
+import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
 @NgModule({
-  declarations: [HeaderComponent, UserComponent, UserInfoComponent],
+  declarations: [HeaderComponent, UserComponent, UserInfoComponent, AdminHeaderComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -25,6 +26,8 @@ import { UserInfoComponent } from './components/user/user-info/user-info.compone
     MaterialModule,
     HeaderComponent,
     UserComponent,
+    AdminHeaderComponent,
+    RouterModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

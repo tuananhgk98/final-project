@@ -19,17 +19,4 @@ export class APIInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 
-
-  handleError(error: any) {
-    let errorMessage = '';
-
-    if (error.status == 401) {
-      errorMessage = 'Bạn không có quyền thực hiện chức năng này';
-    }
-    else if (error.status == 500) {
-      errorMessage = 'Máy chủ hiện đang lỗi, vui lòng thử lại sau';
-    }
-    window.alert(errorMessage);
-    return throwError(errorMessage);
-  }
 }

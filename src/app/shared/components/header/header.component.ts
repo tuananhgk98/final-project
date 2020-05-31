@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.routeSnapshot = window.location.href.split('/');
-    console.log(this.routeSnapshot);
   }
 
 }

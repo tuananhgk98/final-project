@@ -1,0 +1,11 @@
+<div class=" header-container">
+    <div class="main">
+        <img src="../../../../assets/images/login-logo.png" width="200px" alt="">
+        <ul class="nav-menu">
+            <li [ngClass]="routeSnapshot.includes('user') ? 'li-active' : ''">Quản lý học viên</li>
+            <li [ngClass]="routeSnapshot.includes('course') ? 'li-active' : ''" routerLink="/admin/course">Quản lý khoá
+                học</li>
+        </ul>
+    </div>
+    <app-user></app-user>
+</div>

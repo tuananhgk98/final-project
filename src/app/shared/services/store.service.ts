@@ -1,5 +1,6 @@
 
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -8,6 +9,7 @@ import { Injectable } from '@angular/core';
 export class StoreService {
     constructor() { }
 
+    user = new BehaviorSubject<object>(null);
 
     get getUser() {
         return this.get('user');
@@ -24,5 +26,13 @@ export class StoreService {
         } catch (_e) {
             return value;
         }
+    }
+
+    set(key: string, object: object) {
+        localStorage.setItem(key, JSON.stringify(object));
+    }
+
+    remove(key: string) {
+        localStorage.removeItem(key);
     }
 }

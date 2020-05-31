@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs/operators';
+import { StoreService } from '../../../shared/services/store.service';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent {
     private router: Router,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
+    private storeService: StoreService
   ) {
     this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
@@ -28,7 +30,6 @@ export class LoginComponent {
   }
 
   loginForm: FormGroup;
-  name = '';
   isLoading: boolean;
 
   login() {
@@ -36,6 +37,7 @@ export class LoginComponent {
     this.loginService.login(this.loginForm.value).pipe(
       finalize(() => this.isLoading = false)
     ).subscribe(res => {
+      this.storeService.set('user', res.data);
       this.router.navigateByUrl('/pages/course');
       this.snackBar.open(`Xin chào ${res.data.name}`, 'Bỏ qua', { duration: 3000 })
     });

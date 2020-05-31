@@ -20,9 +20,9 @@ import { AdminHeaderComponent } from './components/admin-header/admin-header.com
   ],
 
   exports: [
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
     MaterialModule,
     HeaderComponent,
     UserComponent,

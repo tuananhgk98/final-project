@@ -1,13 +1,13 @@
 <div class="user">
-  <img [src]="user.imgUrl" alt="" width="100%" [matMenuTriggerFor]="menu">
+  <img [src]="user?.imgUrl" alt="" width="100%" [matMenuTriggerFor]="menu">
   <mat-menu #menu="matMenu">
     <button mat-menu-item style="outline: none;" routerLink="/pages/my-info">
-      {{user.name}}
+      {{user?.name}}
     </button>
     <button mat-menu-item style="outline: none;" routerLink="/pages/my-info">
       <mat-icon>account_circle</mat-icon> Trang cá nhân
     </button>
-    <button mat-menu-item style="outline: none;">
+    <button mat-menu-item style="outline: none;" (click)="logOut()">
       <mat-icon>exit_to_app</mat-icon> Đăng xuất
     </button>
   </mat-menu>

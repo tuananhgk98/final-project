@@ -7,7 +7,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs/operators';
 import { StoreService } from '../../../shared/services/store.service';
-
+import { SocialLoginService, Provider } from 'ng8-social-login';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +21,8 @@ export class LoginComponent {
     private router: Router,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private socialLogin: SocialLoginService
   ) {
     this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
@@ -40,6 +41,12 @@ export class LoginComponent {
       this.storeService.set('user', res.data);
       this.router.navigateByUrl('/pages/course');
       this.snackBar.open(`Xin chào ${res.data.name}`, 'Bỏ qua', { duration: 3000 })
+    });
+  }
+
+  loginWithGoogle() {
+    this.socialLogin.login(Provider.GOOGLE).subscribe(user => {
+      console.log(user);
     });
   }
 }

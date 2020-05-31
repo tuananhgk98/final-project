@@ -9,6 +9,7 @@ export class CourseCreateComponent implements OnInit {
 
   constructor() { }
 
+  editorValue = '';
   ngOnInit(): void {
   }
 

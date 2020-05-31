@@ -21,8 +21,10 @@ export class UserComponent implements OnInit {
   }
 
   logOut() {
-    this.storeService.remove('user');
-    this.router.navigateByUrl('/login');
+    if (confirm('Bạn thực sự muốn đăng xuất?')) {
+      this.storeService.remove('user');
+      this.router.navigateByUrl('/login');
+    }
   }
 
 }

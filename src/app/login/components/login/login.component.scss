@@ -1,8 +1,22 @@
 div {
   cursor: pointer;
 }
+.quote {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 20px;
+  q {
+    font-size: 3rem;
+  }
+  p {
+    color: #7a8994;
+    margin-top: 5px;
+  }
+}
 .background {
   background: #f7f6f1;
+  // background: url(/assets/images/background.jpg);
   background-size: cover;
   background-position: center;
   width: 100%;

@@ -61,7 +61,7 @@
           <input type="text" placeholder="...">
         </div>
       </div>
-      <button class="btn btn-primary" type="button" (click)="showSchoolInfo= true">Thêm</button>
+      <button *ngIf="!showSchoolInfo" class="btn btn-primary" type="button" (click)="showSchoolInfo= true">Thêm</button>
       <div class="group-btn" *ngIf="showSchoolInfo">
         <button class="btn btn-primary" type="button">Lưu</button>
         <button class="btn btn-light" type="button" (click)="showSchoolInfo= false">Huỷ</button>
@@ -83,7 +83,7 @@
           <input type="text" placeholder="...">
         </div>
       </div>
-      <button class="btn btn-primary" type="button" (click)="showProject = true">Thêm</button>
+      <button *ngIf="!showProject" class="btn btn-primary" type="button" (click)="showProject = true">Thêm</button>
       <div class="group-btn" *ngIf="showProject">
         <button class="btn btn-primary" type="button">Lưu</button>
         <button class="btn btn-light" type="button" (click)="showProject = false">Huỷ</button>
@@ -101,7 +101,7 @@
           <input type="text" placeholder="...">
         </div>
       </div>
-      <button class="btn btn-primary" type="button" (click)="showSkill = true">Thêm</button>
+      <button *ngIf="!showSkill" class="btn btn-primary" type="button" (click)="showSkill = true">Thêm</button>
       <div class="group-btn" *ngIf="showSkill">
         <button class="btn btn-primary" type="button">Lưu</button>
         <button class="btn btn-light" type="button" (click)="showSkill = false">Huỷ</button>

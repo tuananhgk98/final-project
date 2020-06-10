@@ -1,5 +1,9 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+<form [formGroup]="loginForm">
   <div class="background">
+    <div class="quote">
+      <q>Stay hungry, stay foolish .</q>
+      <p>Steve Job - Apple's CEO</p>
+    </div>
     <div class="login">
       <div class="login-logo">
         <img src="../../../../assets/images/login-logo.png" alt="" width="150px">
@@ -19,10 +23,13 @@
             Trường bắt buộc</mat-error>
         </div>
         <div class="login-button">
-          <button mat-raised-button type="submit" color="primary" [disabled]="loginForm.invalid">Đăng nhập
+          <button mat-raised-button type="submit" color="primary" [disabled]="loginForm.invalid" (click)="login();">Đăng
+            nhập
             <i class="fa fa-spinner fa-spin m-r-5" *ngIf="isLoading"></i>
           </button>
           <p>Quên mật khẩu ?</p>
+          <button class="w-100 btn btn-success" (click)="loginWithGoogle()">Đăng nhập với
+            Google</button>
         </div>
         <div class="register">
           <a routerLink="/login/register">Đăng ký</a>

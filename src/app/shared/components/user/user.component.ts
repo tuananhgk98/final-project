@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../../services/store.service';
 import { IUser } from '../../interface/user.interface';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/login/services/login.service';
 
 
 @Component({
@@ -13,11 +14,14 @@ export class UserComponent implements OnInit {
 
   constructor(
     private storeService: StoreService,
+    private loginService: LoginService,
     private router: Router
   ) { }
   user: IUser;
   ngOnInit(): void {
-    this.user = this.storeService.get('user');
+    this.loginService.currentUser.subscribe((user: IUser) => {
+      this.user = user ? user : this.storeService.get('user');
+    });
   }
 
   logOut() {

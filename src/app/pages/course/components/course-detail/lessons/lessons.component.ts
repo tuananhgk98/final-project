@@ -9,6 +9,16 @@ export class LessonsComponent implements OnInit {
   lessonForm: FormGroup;
   isShow: boolean = false;
   editorOptions = { theme: 'vs-dark', language: 'javascript' };
+  testCase = [
+    {
+      case: 'main(15)',
+      expected: 39
+    },
+    {
+      case: 'main(30)',
+      expected: 54
+    }
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -16,7 +26,6 @@ export class LessonsComponent implements OnInit {
     this.lessonForm = this.formBuilder.group({
       code: ['', Validators.required]
     });
-
   }
 
   ngOnInit(): void {
@@ -31,7 +40,18 @@ export class LessonsComponent implements OnInit {
   }
 
   run() {
-    console.log(this.lessonForm.value);
+
   }
+
+  execute(functionText: string, testCase: any[]) {
+    console.clear();
+    testCase.map(item => {
+      const result = eval(functionText + item.case);
+      if (result === item.expected) {
+        console.log('Case' + item.case + 'has resolve');
+      }
+    });
+  }
+
 }
 

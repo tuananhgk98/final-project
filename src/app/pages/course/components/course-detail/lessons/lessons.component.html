@@ -31,27 +31,16 @@
     <div class="test-case">
       <h1>Test case</h1>
       <div class="test">
-        <div class="test-result">
-          <h4>Test</h4>
-        </div>
-        <div class="test-result">
-          <h4>Test</h4>
-        </div>
-        <div class="test-result">
-          <h4>Test</h4>
-        </div>
-        <div class="test-result">
-          <h4>Test</h4>
-        </div>
-        <div class="test-result">
-          <h4>Test</h4>
+        <div class="test-result" *ngFor="let case of testCase">
+          <h4>Case : {{case.case}}</h4>
+          <h4>Expected : {{case.expected}}</h4>
         </div>
       </div>
       <div class="test-footer">
         <button class="btn btn-primary"><i class="fas fa-broom"></i></button>
         <div>
           <button class="btn btn-success">Lưu</button>
-          <button class="btn btn-primary mx-1" (click)="$event.preventDefault();run()">Chạy thử</button>
+          <button class="btn btn-primary mx-1" (click)="$event.preventDefault();execute(lessonForm.get('code').value, testCase)">Chạy thử</button>
         </div>
       </div>
     </div>

@@ -1,7 +1,59 @@
 <mat-card class="mt-5">
     <mat-card-title>Tạo mới khoá học</mat-card-title>
     <mat-card-content>
-        <ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true">
-        </ck-editor>
+        <!-- <ck-editor name="editor" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true">
+        </ck-editor> -->
+        <form [formGroup]="form">
+            <div class="d-flex justify-content-center">
+                <mat-form-field class="w-50">
+                    <mat-label>Chủ đề</mat-label>
+                    <input matInput type="text" formControlName="tag">
+                    <button mat-button *ngIf="form.get('tag').value" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="clearValue('tag')">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="form.get('tag').dirty ||
+                     form.get('tag').touched && form.get('tag').hasError('required')">
+                        Vui lòng điền vào trường này
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-center">
+                <mat-form-field class="w-50">
+                    <mat-label>Tên khoá học</mat-label>
+                    <input matInput type="text" formControlName="name">
+                    <button mat-button *ngIf="form.get('name').value" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="clearValue('name')">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="form.get('name').dirty ||
+                     form.get('name').touched && form.get('name').hasError('required')">
+                        Vui lòng điền vào trường này
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-center">
+                <mat-form-field class="w-50">
+                    <mat-label>Nội dung khoá học</mat-label>
+                    <textarea formControlName="content" matInput></textarea>
+                    <button mat-button *ngIf="form.get('content').value" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="clearValue('content')">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-error *ngIf="form.get('content').dirty ||
+                     form.get('content').touched && form.get('content').hasError('required')">
+                        Vui lòng điền vào trường này
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="submit()">Tạo mới
+                    <i class="fa fa-spinner fa-spin m-r-5" *ngIf="loading"></i>
+                </button>
+                <button class="ml-2" mat-raised-button (click)="navigateToList()">Huỷ
+
+                </button>
+            </div>
+        </form>
     </mat-card-content>
 </mat-card>

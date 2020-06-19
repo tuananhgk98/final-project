@@ -9,8 +9,10 @@ import { HeaderComponent } from '../shared/components/header/header.component';
 import { UserComponent } from '../shared/components/user/user.component';
 import { UserInfoComponent } from './components/user/user-info/user-info.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { DialogConfirmComponent } from './components/dialog/dialog-confirm/dialog-confirm.component';
 @NgModule({
-  declarations: [HeaderComponent, UserComponent, UserInfoComponent, AdminHeaderComponent],
+  declarations: [HeaderComponent, UserComponent, UserInfoComponent, AdminHeaderComponent, LoadingComponent, DialogConfirmComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -18,7 +20,7 @@ import { AdminHeaderComponent } from './components/admin-header/admin-header.com
     ReactiveFormsModule,
     MaterialModule
   ],
-
+  entryComponents : [DialogConfirmComponent],
   exports: [
     FormsModule,
     ReactiveFormsModule,
@@ -27,7 +29,9 @@ import { AdminHeaderComponent } from './components/admin-header/admin-header.com
     HeaderComponent,
     UserComponent,
     AdminHeaderComponent,
-    RouterModule
+    RouterModule,
+    LoadingComponent,
+    DialogConfirmComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

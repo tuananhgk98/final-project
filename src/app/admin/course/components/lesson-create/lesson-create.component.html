@@ -1,0 +1,40 @@
+<mat-card class="mt-5">
+    <mat-card-title>Tạo bài học cho khoá : HTML for dummies</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <div class="d-flex justify-content-center mt-5">
+                <mat-form-field class="w-50">
+                    <mat-label>
+                        Tên bài học
+                    </mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+
+            <div class="d-flex justify-content-center mt-2">
+                <mat-form-field class="w-50">
+                    <mat-label>
+                        Link youtube bài học
+                    </mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+
+            <div class="d-flex justify-content-center mt-2">
+                <mat-form-field class="w-50">
+                    <mat-label>Nội dung khoá học</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="submit()">Tạo mới
+                    <i class="fa fa-spinner fa-spin m-r-5"></i>
+                </button>
+                <button class="ml-2" mat-raised-button (click)="navigateToList()">Huỷ
+
+                </button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

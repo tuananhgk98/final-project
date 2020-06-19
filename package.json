@@ -25,6 +25,7 @@
     "ckeditor": "^4.12.1",
     "jquery": "^3.5.1",
     "lodash": "^4.17.15",
+    "moment": "^2.26.0",
     "ng8-social-login": "^8.0.1",
     "ngx-ckeditor": "^8.0.0",
     "ngx-monaco-editor": "^6.0.0",

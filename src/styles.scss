@@ -5,3 +5,7 @@ body { margin: 0;
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
  button{ outline: none !important;}
+
+ .table-responsive{
+     overflow:auto;
+   }

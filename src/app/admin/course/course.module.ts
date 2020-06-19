@@ -7,6 +7,9 @@ import { CKEditorModule } from "ngx-ckeditor";
 
 import { CourseListComponent } from './components/course-list/course-list.component';
 import { CourseCreateComponent } from './components/course-create/course-create.component';
+import { MaterialModule } from 'src/app/material/material.module';
+import { LessonCreateComponent } from './components/lesson-create/lesson-create.component';
+import { LessonListComponent } from './components/lesson-list/lesson-list.component';
 
 @Pipe({ name: 'safeHtml' })
 export class SafeHtmlPipe implements PipeTransform {
@@ -17,11 +20,12 @@ export class SafeHtmlPipe implements PipeTransform {
 }
 
 @NgModule({
-  declarations: [CourseListComponent, CourseCreateComponent, SafeHtmlPipe],
+  declarations: [CourseListComponent, CourseCreateComponent, SafeHtmlPipe, LessonCreateComponent, LessonListComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,
     SharedModule,
+    MaterialModule,
     CKEditorModule
   ],
   schemas: [

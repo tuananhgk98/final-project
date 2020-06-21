@@ -25,5 +25,7 @@ export class CourseService {
     return this.http.delete<any>(`course/${courseId}`);
   }
 
-
+  listLesson(courseId : string) : Observable<any> {
+    return this.http.get<any>(`course/lessonOfCourse/${courseId}`);
+  }
 }

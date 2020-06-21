@@ -20,52 +20,11 @@
     </div>
     <div class="course">
         <h4>Bai hoc</h4>
-        <div class="course__list">
+        <div class="course__list" *ngFor="let lesson of lessonList, index as i">
             <div class="course__content">
-                <h4>Bai 0 : Chuan bi do nghe</h4>
+                <h4>Bai {{i+1}} : {{lesson?.name}}</h4>
                 <p>
-                    Huong dan chuan bi cong cu Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Dolorum, eaque.
-                </p>
-                <button class="course__btn">Bắt đầu</button>
-            </div>
-            <div class="course__content">
-                <h4>Bai 0 : Chuan bi do nghe</h4>
-                <p>
-                    Huong dan chuan bi cong cu Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Dolorum, eaque.
-                </p>
-                <button class="course__btn">Bắt đầu</button>
-            </div>
-            <div class="course__content">
-                <h4>Bai 0 : Chuan bi do nghe</h4>
-                <p>
-                    Huong dan chuan bi cong cu Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Dolorum, eaque.
-                </p>
-                <button class="course__btn">Bắt đầu</button>
-            </div>
-            <div class="course__content">
-                <h4>Bai 0 : Chuan bi do nghe</h4>
-                <p>
-                    Huong dan chuan bi cong cu Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Dolorum, eaque.
-                </p>
-                <button class="course__btn">Bắt đầu</button>
-            </div>
-            <div class="course__content">
-                <h4>Bai 0 : Chuan bi do nghe</h4>
-                <p>
-                    Huong dan chuan bi cong cu Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Dolorum, eaque.
-                </p>
-                <button class="course__btn">Bắt đầu</button>
-            </div>
-            <div class="course__content">
-                <h4>Bai 0 : Chuan bi do nghe</h4>
-                <p>
-                    Huong dan chuan bi cong cu Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Dolorum, eaque.
+                    {{lesson?.content}}
                 </p>
                 <button class="course__btn">Bắt đầu</button>
             </div>

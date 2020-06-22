@@ -10,6 +10,7 @@ import { finalize } from 'rxjs/operators';
 })
 export class CourseDetailComponent implements OnInit {
   lessonList = [];
+  course: any;
   loading: boolean;
   courseId: any;
   constructor(
@@ -32,6 +33,9 @@ export class CourseDetailComponent implements OnInit {
         }
       }
     );
+    this.courseService.list().subscribe(payload => {
+      this.course = payload.data.find(course => course._id === this.courseId);
+    });
   }
 
 }

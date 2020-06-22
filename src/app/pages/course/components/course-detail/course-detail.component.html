@@ -1,13 +1,8 @@
 <div class="course__info">
     <div class="info__header">
-        <h1>JavaScript từ A-Z 2018</h1>
+        <h1>{{course?.name}}</h1>
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-            recusandae accusantium ullam doloremque suscipit cupiditate harum
-            nulla libero dicta dolor! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Porro facilis aliquam excepturi veniam mollitia
-            quisquam autem non voluptatum in aut, tempora sunt cum, quo voluptas
-            quod ducimus eaque quibusdam cumque.
+            {{course?.content}}
         </p>
         <p>Video hướng dẫn làm bài tập JS : <a href="">Tại đây</a></p>
         <p>Đăng ký vào slack : <a href="">Tại đây</a></p>
@@ -19,14 +14,14 @@
         </div>
     </div>
     <div class="course">
-        <h4>Bai hoc</h4>
+        <h4>Bài học</h4>
         <div class="course__list" *ngFor="let lesson of lessonList, index as i">
             <div class="course__content">
                 <h4>Bai {{i+1}} : {{lesson?.name}}</h4>
                 <p>
                     {{lesson?.content}}
                 </p>
-                <button class="course__btn">Bắt đầu</button>
+                <button class="course__btn" routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">Bắt đầu</button>
             </div>
         </div>
     </div>

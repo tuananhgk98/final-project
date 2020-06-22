@@ -2,11 +2,11 @@
   <div class="lesson">
     <div class="lesson-content">
       <div class="lesson-info">
-        <h4>JavaScript từ A-Z 2018</h4>
-        <h1>Bài 0 : Chuẩn bị đồ nghề</h1>
-        <h3>Hướng dẫn chuẩn bị các công cụ phục vụ cho khoá học</h3>
-      </div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/Oo9MAd40lbI" frameborder="0"
+        <h4>{{course?.name}}</h4>
+        <h1>Bài 0 : {{lesson?.name}}</h1>
+        <h3>{{lesson?.content}}</h3>
+      </div> 
+      <iframe width="560" height="315" src="{{lesson?.youtubeUrl | safe}}" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="practice">

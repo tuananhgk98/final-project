@@ -28,4 +28,8 @@ export class CourseService {
   listLesson(courseId : string) : Observable<any> {
     return this.http.get<any>(`course/lessonOfCourse/${courseId}`);
   }
+
+  getLesson(lessonId : string) : Observable<any> {
+    return this.http.get<any>(`course/lesson/${lessonId}`);
+  }
 }

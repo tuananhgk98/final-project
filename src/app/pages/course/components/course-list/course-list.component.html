@@ -1,10 +1,10 @@
-<div class="course__list" *ngFor="let course of courseList">
+<div class="course__list">
     <app-loading *ngIf="loading"></app-loading>
     <h3 class="list__title">Khóa học tự do</h3>
-    <div class="list__des">
+    <div class="list__des" *ngFor="let course of courseList">
         <div class="des__header">
             <h4>{{course?.tag}}</h4>
-            <button class="route__btn" routerLink="/pages/course/{{course?._id}}">Tiếp tục</button>
+            <button class="route__btn" routerLink="/pages/course/{{course?._id}}">Tham gia</button>
         </div>
         <div class="des__body">
             <h1>{{course?.name}}</h1>
@@ -12,9 +12,11 @@
                 {{course?.content}}
             </p>
             <p>Tổng số bài học : {{course?.lessonCount}}</p>
-            <p>Video hướng dẫn làm bài tập JS : <a href="">Tại đây</a></p>
-            <p>Đăng ký vào slack : <a href="">Tại đây</a></p>
-            <p>Like <a href="">CodersX Page</a> để câp nhật thông tin</p>
+            <div *ngIf="course.tag.includes('JAVASCRIPT')">
+                <p>Video hướng dẫn làm bài tập JS : <a href="">Tại đây</a></p>
+                <p>Đăng ký vào slack : <a href="">Tại đây</a></p>
+                <p>Like <a href="">CodersX Page</a> để câp nhật thông tin</p>
+            </div>
             <div class="author">
                 <img src="
                 https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-9/73108475_2425234207701456_7172198885824135168_o.jpg?_nc_cat=110&_nc_sid=85a577&_nc_ohc=E69bKkrW-_oAX95R7PG&_nc_ht=scontent.fhan2-4.fna&oh=acbffdf6543c5bf11084321d78eb5a4c&oe=5F168741

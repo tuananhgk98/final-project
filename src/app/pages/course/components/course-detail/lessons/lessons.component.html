@@ -3,15 +3,18 @@
     <div class="lesson-content">
       <div class="lesson-info">
         <h4>{{course?.name}}</h4>
-        <h1>Bài 0 : {{lesson?.name}}</h1>
+        <h1>Bài {{lesson?.num}} : {{lesson?.name}}</h1>
         <h3>{{lesson?.content}}</h3>
       </div> 
-      <iframe width="560" height="315" src="{{lesson?.youtubeUrl | safe}}" frameborder="0"
+      <iframe width="560" height="315" [src]="youtubeUrl" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <div class="practice">
+    <div class="practice" *ngIf="lesson?.exNum">
       <h4>Bài tập</h4>
       <button class="btn btn-primary" (click)="$event.preventDefault();showTestCase()"> Làm bài tập</button>
+    </div>
+    <div class="d-flex justify-content-end mt-3">
+      <button mat-raised-button color="primary" (click)="nextLesson()">Bài tiếp theo</button>
     </div>
   </div>
   <div class="practice-page" *ngIf="isShow">

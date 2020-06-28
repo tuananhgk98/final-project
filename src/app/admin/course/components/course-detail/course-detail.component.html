@@ -1,5 +1,5 @@
 <mat-card class="mt-5">
-    <mat-card-title>Tạo mới khoá học</mat-card-title>
+    <mat-card-title>Thông tin khoá học</mat-card-title>
     <mat-card-content>
         <!-- <ck-editor name="editor" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true">
         </ck-editor> -->
@@ -47,10 +47,11 @@
                 </mat-form-field>
             </div>
             <div class="d-flex justify-content-end">
-                <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="submit()">Tạo mới
+                <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="submit()">Cập nhật
                     <i class="fa fa-spinner fa-spin m-r-5" *ngIf="loading"></i>
                 </button>
                 <button class="ml-2" mat-raised-button (click)="navigateToList()">Huỷ
+
                 </button>
             </div>
         </form>

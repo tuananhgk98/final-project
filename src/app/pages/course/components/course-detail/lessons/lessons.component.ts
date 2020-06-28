@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, Pipe, PipeTransform } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CourseService } from 'src/app/admin/course/course.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeResourceUrl, DomSanitizationService } from '@angular/platform-browser';
+import { SafeResourceUrl } from '@angular/platform-browser';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -24,6 +24,7 @@ export class LessonsComponent implements OnInit {
   isShow: boolean = false;
   lesson: any;
   course: any;
+  youtubeUrl: any;
   lessonId: string;
   courseId: string;
   editorOptions = { theme: 'vs-dark', language: 'javascript' };
@@ -42,7 +43,8 @@ export class LessonsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private courseService: CourseService,
     private activatedRoute: ActivatedRoute,
-    sanitizer: DomSanitizationService
+    public sanitizer: DomSanitizer,
+    private router: Router
   ) {
     this.lessonForm = this.formBuilder.group({
       code: ['', Validators.required]
@@ -58,7 +60,10 @@ export class LessonsComponent implements OnInit {
 
   loadData() {
     this.courseService.getLesson(this.lessonId).subscribe(payload => {
-      if (payload.ok) this.lesson = payload.data;
+      if (payload.ok) {
+        this.lesson = payload.data;
+        this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.lesson.youtubeUrl);
+      }
     });
     this.courseService.list().subscribe(payload => {
       if (payload.ok) {
@@ -84,6 +89,15 @@ export class LessonsComponent implements OnInit {
       const result = eval(functionText + item.case);
       if (result === item.expected) {
         console.log('Case' + item.case + 'has resolve');
+      }
+    });
+  }
+
+  nextLesson() {
+    this.courseService.listLesson(this.courseId).subscribe(payload => {
+      if (payload.ok) {
+        const nextLessonId = payload.data.find(lesson => lesson.num - 1 === this.lesson.num)._id;
+        this.router.navigate([`/pages/course/${this.courseId}/lesson/${nextLessonId}`]);
       }
     });
   }

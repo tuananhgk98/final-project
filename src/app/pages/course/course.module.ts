@@ -7,12 +7,14 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
 import { LessonsComponent } from './components/course-detail/lessons/lessons.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { MaterialModule } from 'src/app/material/material.module';
 @NgModule({
   declarations: [CourseListComponent, CourseDetailComponent, LessonsComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,
     FormsModule,
+    MaterialModule,
     ReactiveFormsModule,
     MonacoEditorModule.forRoot()
   ],

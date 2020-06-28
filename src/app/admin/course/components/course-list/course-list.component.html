@@ -30,10 +30,10 @@
                                 <button mat-menu-item routerLink="/admin/course/{{element?._id}}/lesson-create"><i
                                         class="fa fa-plus"></i> Thêm bài học</button>
                                 <button mat-menu-item routerLink="/admin/course/{{element?._id}}/lesson"><i
-                                        class="fa fa-info"></i> Danh sách bài học</button>
+                                        class="fa fa-info-circle"></i> Danh sách bài học</button>
                                 <button mat-menu-item (click)="delete(element)"><i class="fa fa-trash"></i> Xoá khoá
                                     học</button>
-                                <button mat-menu-item><i class="fa fa-pencil"></i> Sửa khoá học</button>
+                                <button mat-menu-item routerLink="/admin/course/{{element?._id}}"><i class="fa fa-pencil"></i> Thông tin khoá học</button>
                             </ng-container>
                         </mat-menu>
                     </td>

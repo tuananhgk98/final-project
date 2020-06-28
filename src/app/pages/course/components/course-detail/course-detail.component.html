@@ -15,13 +15,13 @@
     </div>
     <div class="course">
         <h4>Bài học</h4>
-        <div class="course__list" *ngFor="let lesson of lessonList, index as i">
+        <div class="course__list" *ngFor="let lesson of lessonList">
             <div class="course__content">
-                <h4>Bai {{i+1}} : {{lesson?.name}}</h4>
+                <h4>Bai {{lesson?.num}} : {{lesson?.name}}</h4>
                 <p>
                     {{lesson?.content}}
                 </p>
-                <button class="course__btn" routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">Bắt đầu</button>
+                <button mat-raised-button color="primary" *ngIf="user && user.learned" [disabled]="!user?.learned?.lesson?.includes(lesson?._id)" routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">Bắt đầu</button>
             </div>
         </div>
     </div>

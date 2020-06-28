@@ -10,6 +10,8 @@ import { CourseCreateComponent } from './components/course-create/course-create.
 import { MaterialModule } from 'src/app/material/material.module';
 import { LessonCreateComponent } from './components/lesson-create/lesson-create.component';
 import { LessonListComponent } from './components/lesson-list/lesson-list.component';
+import { LessonDetailComponent } from './components/lesson-detail/lesson-detail.component';
+import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 
 @Pipe({ name: 'safeHtml' })
 export class SafeHtmlPipe implements PipeTransform {
@@ -20,7 +22,7 @@ export class SafeHtmlPipe implements PipeTransform {
 }
 
 @NgModule({
-  declarations: [CourseListComponent, CourseCreateComponent, SafeHtmlPipe, LessonCreateComponent, LessonListComponent],
+  declarations: [CourseListComponent, CourseCreateComponent, SafeHtmlPipe, LessonCreateComponent, LessonListComponent, LessonDetailComponent, CourseDetailComponent],
   imports: [
     CommonModule,
     CourseRoutingModule,

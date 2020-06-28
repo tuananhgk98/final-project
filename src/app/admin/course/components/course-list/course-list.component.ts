@@ -47,10 +47,6 @@ export class CourseListComponent implements OnInit {
         });
       }
     });
-
-
   }
-
-
 
 }

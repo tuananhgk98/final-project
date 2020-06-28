@@ -4,12 +4,17 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { CourseCreateComponent } from './components/course-create/course-create.component';
 import { LessonListComponent } from './components/lesson-list/lesson-list.component';
 import { LessonCreateComponent } from './components/lesson-create/lesson-create.component';
+import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: CourseListComponent
+  },
+  {
+    path: '/:courseId',
+    component: CourseDetailComponent
   },
   {
     path: 'create',

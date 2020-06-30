@@ -17,6 +17,9 @@ export class CourseDetailComponent implements OnInit {
   courseId: any;
   userId : string;
   user : any = [];
+  isTrueNextLessonId :string;
+  firstLessonId : string;
+  currentLessonId : string;
   constructor(
     private courseService: CourseService,
     private activatedRoute: ActivatedRoute,
@@ -25,6 +28,7 @@ export class CourseDetailComponent implements OnInit {
   ) {
     this.courseId = this.activatedRoute.snapshot.paramMap.get('courseId');
     this.userId = this.storeService.getUserId;
+    this.currentLessonId = this.storeService.getCurrentLessonId;
   }
 
   ngOnInit(): void {
@@ -40,12 +44,17 @@ export class CourseDetailComponent implements OnInit {
       payload => {
         if (payload.ok) {
           this.lessonList = payload.data;
+          const num = this.lessonList.find(lesson => lesson._id === this.currentLessonId).num;
+          this.firstLessonId = this.lessonList[0]._id;
+          this.isTrueNextLessonId = this.lessonList.find(lesson => lesson.num -1 === num)._id;
         }
       }
     );
     this.courseService.list().subscribe(payload => {
       this.course = payload.data.find(course => course._id === this.courseId);
     });
+
+
   }
 
 }

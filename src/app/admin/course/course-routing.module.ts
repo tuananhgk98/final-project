@@ -5,6 +5,8 @@ import { CourseCreateComponent } from './components/course-create/course-create.
 import { LessonListComponent } from './components/lesson-list/lesson-list.component';
 import { LessonCreateComponent } from './components/lesson-create/lesson-create.component';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
+import { LessonDetailComponent } from './components/lesson-detail/lesson-detail.component';
+import { ExerciseCreateComponent } from './components/exercise-create/exercise-create.component';
 
 
 const routes: Routes = [
@@ -13,7 +15,7 @@ const routes: Routes = [
     component: CourseListComponent
   },
   {
-    path: '/:courseId',
+    path: ':courseId',
     component: CourseDetailComponent
   },
   {
@@ -27,6 +29,14 @@ const routes: Routes = [
   {
     path : ':courseId/lesson-create',
     component: LessonCreateComponent
+  },
+  {
+    path : ':courseId/lesson/:lessonId',
+    component: LessonDetailComponent
+  },
+  {
+    path : ':courseId/lesson/:lessonId/exercise-create',
+    component: ExerciseCreateComponent
   }
 ];
 

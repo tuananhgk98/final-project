@@ -23,7 +23,8 @@ export class RegisterComponent implements OnInit {
       pwd: [null, Validators.required],
       name: [null, Validators.required],
       phone: [null, Validators.required],
-      imageUrl: ['']
+      imageUrl: [''],
+      email : [null, Validators.required]
     });
   }
 

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../../course.service';
 import { finalize } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-lesson-detail',
@@ -15,11 +16,13 @@ export class LessonDetailComponent implements OnInit {
   loading: boolean;
   lessonId: string;
   course: any;
+  updating : boolean;
   constructor(
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private snackBar: MatSnackBar
   ) {
     this.form = this.fb.group({
       name: [''],
@@ -46,7 +49,13 @@ export class LessonDetailComponent implements OnInit {
   }
 
   submit() {
-
+    this.updating = true;
+    this.courseService.updateLesson(this.lessonId, this.form.value).pipe(finalize(() => this.loading = false)).subscribe(payload => {
+      if(payload.ok){
+        this.snackBar.open('Cập nhân học thành công', 'Bỏ qua', { duration: 3000 });
+        this.navigateToList();
+      }
+    });
   }
 
   navigateToList() {

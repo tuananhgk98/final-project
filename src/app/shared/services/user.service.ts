@@ -4,12 +4,24 @@ import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
-  })
+})
 
-  export class UserService {
-      constructor(public http : HttpClient){}
+export class UserService {
+    constructor(public http: HttpClient) { }
 
-      get(userId : string) : Observable<any>{
-          return this.http.get<any>(`user/${userId}`)
-      }
-  }
+    list(): Observable<any> {
+        return this.http.get<any>('user');
+    }
+
+    get(userId: string): Observable<any> {
+        return this.http.get<any>(`user/${userId}`)
+    }
+
+    forgotPwd(body) : Observable<any> {
+        return this.http.put<any>('user/forgotPwd', body);
+    }
+
+    updateLearned(userId: string, body): Observable<any> {
+        return this.http.put<any>(`user/learned/${userId}`, body);
+    }
+}

@@ -1,19 +1,11 @@
 <mat-card class="mt-5">
-    <mat-card-title>Danh sách bài học trong khoá : {{course?.name}}</mat-card-title>
+    <mat-card-title>Quản lý khoá học</mat-card-title>
     <mat-card-content>
         <div class="d-flex mt-5">
             <button class="mr-2" mat-raised-button (click)="loadData()">
                 <mat-icon>refresh</mat-icon>
                 <span>Làm mới</span>
             </button>
-            <button mat-raised-button routerLink="/admin/course/{{course?._id}}/lesson-create">
-                <mat-icon>add</mat-icon>
-                <span>Tạo mới</span>
-            </button>
-            <!-- <button mat-raised-button routerLink="/admin/course/create">
-                <mat-icon>add</mat-icon>
-                <span>Tạo mới</span>
-            </button> -->
         </div>
         <div class="table-responsive mt-5">
             <app-loading *ngIf="loading" class="blur"></app-loading>
@@ -31,14 +23,7 @@
                         </button>
                         <mat-menu #multiple_choice="matMenu" class="pagination-popover-menu">
                             <ng-container>
-                                <button mat-menu-item routerLink="/admin/course/{{course?._id}}/lesson/{{element?._id}}/exercise-create"><i
-                                        class="fa fa-plus"></i> Thêm bài tập</button>
-                                <button mat-menu-item routerLink="/admin/course/{{element?._id}}/lesson-create"><i
-                                        class="fa fa-info-circle"></i> Danh sách bài tập</button>
-                                        <!-- <button mat-menu-item (click)="delete(element)"><i
-                                            class="fa fa-trash"></i> Xoá bài học</button>       -->
-                                             <button mat-menu-item routerLink="/admin/course/{{courseId}}/lesson/{{element?._id}}"><i
-                                            class="fa fa-pencil"></i>Thông tin bài học</button>      
+                                <button mat-menu-item><i class="fa fa-trash"></i>Xoá học viên</button>
                             </ng-container>
                         </mat-menu>
                     </td>
@@ -48,12 +33,12 @@
                     <td mat-cell *matCellDef="let element"> {{element?._id}} </td>
                 </ng-container>
                 <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef>Tên bài học</th>
+                    <th mat-header-cell *matHeaderCellDef>Họ & Tên</th>
                     <td mat-cell *matCellDef="let element"> {{element?.name}} </td>
                 </ng-container>
-                <ng-container matColumnDef="exNum">
-                    <th mat-header-cell *matHeaderCellDef>Số lượng bài tập</th>
-                    <td mat-cell *matCellDef="let element"> {{element?.exNum}} </td>
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef>Email</th>
+                    <td mat-cell *matCellDef="let element"> {{element?.email}} </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

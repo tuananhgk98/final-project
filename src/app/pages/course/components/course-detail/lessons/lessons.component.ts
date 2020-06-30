@@ -3,7 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CourseService } from 'src/app/admin/course/course.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeResourceUrl } from '@angular/platform-browser';
+import { StoreService } from 'src/app/shared/services/store.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -27,6 +28,9 @@ export class LessonsComponent implements OnInit {
   youtubeUrl: any;
   lessonId: string;
   courseId: string;
+  userId: string;
+  user: any;
+  enableNextLesson: boolean;
   editorOptions = { theme: 'vs-dark', language: 'javascript' };
   testCase = [
     {
@@ -44,13 +48,16 @@ export class LessonsComponent implements OnInit {
     private courseService: CourseService,
     private activatedRoute: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    private router: Router
+    private router: Router,
+    private storeService: StoreService,
+    private userService: UserService
   ) {
     this.lessonForm = this.formBuilder.group({
       code: ['', Validators.required]
     });
     this.lessonId = this.activatedRoute.snapshot.paramMap.get('lessonId');
     this.courseId = this.activatedRoute.snapshot.paramMap.get('courseId');
+    this.userId = this.storeService.getUserId;
   }
 
   ngOnInit(): void {
@@ -69,7 +76,14 @@ export class LessonsComponent implements OnInit {
       if (payload.ok) {
         this.course = payload.data.find(course => course._id === this.courseId);
       }
+    });
+
+    this.userService.get(this.userId).subscribe(payload => {
+      if (payload.ok) {
+        this.user = payload.data;
+      }
     })
+
   }
 
   showTestCase() {
@@ -93,11 +107,20 @@ export class LessonsComponent implements OnInit {
     });
   }
 
-  nextLesson() {
+  nextLesson(currentLessonId: string) {
     this.courseService.listLesson(this.courseId).subscribe(payload => {
       if (payload.ok) {
-        const nextLessonId = payload.data.find(lesson => lesson.num - 1 === this.lesson.num)._id;
-        this.router.navigate([`/pages/course/${this.courseId}/lesson/${nextLessonId}`]);
+        const nextLessonId = payload.data.find(lesson => lesson.num === this.lesson.num + 1)._id;
+        if (!this.user.learned.lesson.includes(currentLessonId)) {
+          this.user.learned.lesson.push(currentLessonId);
+        }
+        this.userService.updateLearned(this.userId, this.user.learned).subscribe(payload => {
+          if (payload.ok) {
+            this.storeService.set('user', payload.data);
+          }
+        });
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+          this.router.navigate([`/pages/course/${this.courseId}/lesson/${nextLessonId}`]));
       }
     });
   }

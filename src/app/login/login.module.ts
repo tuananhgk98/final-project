@@ -7,9 +7,11 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { SharedModule } from '../shared/shared.module';
 import { NgxSocialLoginModule } from 'ng8-social-login';
+import { ForgotPasswordDialogComponent } from './components/forgot-password-dialog/forgot-password-dialog.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, ForgotPasswordDialogComponent],
+  entryComponents : [ForgotPasswordDialogComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,

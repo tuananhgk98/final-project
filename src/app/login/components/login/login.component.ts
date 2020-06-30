@@ -8,6 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs/operators';
 import { StoreService } from '../../../shared/services/store.service';
 import { SocialLoginService, Provider } from 'ng8-social-login';
+import { MatDialog } from '@angular/material/dialog';
+import { ForgotPasswordDialogComponent } from '../forgot-password-dialog/forgot-password-dialog.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +24,8 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private storeService: StoreService,
-    private socialLogin: SocialLoginService
+    private socialLogin: SocialLoginService,
+    private dialog: MatDialog
   ) {
     this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
@@ -31,22 +34,38 @@ export class LoginComponent {
   }
 
   loginForm: FormGroup;
-  isLoading: boolean;
+  loading: boolean;
 
   login() {
-    this.isLoading = true;
+    this.loading = true;
     this.loginService.login(this.loginForm.value).pipe(
-      finalize(() => this.isLoading = false)
-    ).subscribe(res => {
-      this.storeService.set('user', res.data);
-      this.router.navigateByUrl('/pages/course');
-      this.snackBar.open(`Xin chào ${res.data.name}`, 'Bỏ qua', { duration: 3000 })
+      finalize(() => this.loading = false)
+    ).subscribe(payload => {
+      if (payload.ok) {
+        this.storeService.set('user', payload.data);
+        this.router.navigateByUrl('/pages/course');
+        this.snackBar.open(`Xin chào ${payload.data.name}`, 'Bỏ qua', { duration: 3000 });
+      }
+      else {
+        this.snackBar.open(`Sai tên tk hoặc mật khẩu, vui lòng thử lại`, 'Bỏ qua', { duration: 3000 });
+      }
     });
   }
 
   loginWithGoogle() {
     this.socialLogin.login(Provider.GOOGLE).subscribe(user => {
       console.log(user);
+    });
+  }
+
+  forgotPwd() {
+    const dialogRef = this.dialog.open(ForgotPasswordDialogComponent,
+      {
+        maxWidth: '95vw',
+        width: '500px'
+      });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
     });
   }
 }

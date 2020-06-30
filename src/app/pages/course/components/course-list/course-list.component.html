@@ -4,7 +4,7 @@
     <div class="list__des" *ngFor="let course of courseList">
         <div class="des__header">
             <h4>{{course?.tag}}</h4>
-            <button class="route__btn" routerLink="/pages/course/{{course?._id}}">Tham gia</button>
+            <button style="width : 140px" mat-raised-button color="primary" routerLink="/pages/course/{{course?._id}}">Tham gia</button>
         </div>
         <div class="des__body">
             <h1>{{course?.name}}</h1>

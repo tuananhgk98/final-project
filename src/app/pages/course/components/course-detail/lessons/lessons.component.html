@@ -13,8 +13,8 @@
       <h4>Bài tập</h4>
       <button class="btn btn-primary" (click)="$event.preventDefault();showTestCase()"> Làm bài tập</button>
     </div>
-    <div class="d-flex justify-content-end mt-3">
-      <button mat-raised-button color="primary" (click)="nextLesson()">Bài tiếp theo</button>
+    <div class="d-flex justify-content-end mt-3 mr-2">
+      <button mat-raised-button color="primary" (click)="nextLesson(lesson?._id)">Bài tiếp theo</button>
     </div>
   </div>
   <div class="practice-page" *ngIf="isShow">

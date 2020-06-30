@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-admin-header',
   templateUrl: './admin-header.component.html',
   styleUrls: ['./admin-header.component.scss']
 })
-export class AdminHeaderComponent implements OnInit {
+export class AdminHeaderComponent implements DoCheck {
 
   constructor() { }
 
   routeSnapshot: string[];
 
-  ngOnInit(): void {
+  ngDoCheck(): void {
     this.routeSnapshot = window.location.href.split('/');
   }
 

@@ -17,11 +17,30 @@
         <h4>Bài học</h4>
         <div class="course__list" *ngFor="let lesson of lessonList">
             <div class="course__content">
-                <h4>Bai {{lesson?.num}} : {{lesson?.name}}</h4>
+                <h4>Bài {{lesson?.num}} : {{lesson?.name}}</h4>
                 <p>
                     {{lesson?.content}}
                 </p>
-                <button mat-raised-button color="primary" *ngIf="user && user.learned" [disabled]="!user?.learned?.lesson?.includes(lesson?._id)" routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">Bắt đầu</button>
+                <div *ngIf="user && user.learned">
+                    <button style="width : 140px" mat-raised-button color="primary" *ngIf="!user?.learned?.lesson?.includes(lesson?._id) && lesson?._id === firstLessonId"
+                        routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
+                        <span>Bắt đầu</span>
+                    </button>
+                    <button style="width : 140px" mat-raised-button color="primary" *ngIf="lesson?._id === isTrueNextLessonId"
+                    routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
+                    <span>Bắt đầu</span>
+                </button>
+                    <button style="width : 140px" mat-stroked-button color="primary" *ngIf="user?.learned?.lesson?.includes(lesson?._id)"
+                        routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
+                        <span>Xem lại</span>
+                    </button>
+                    <button style="width : 140px" mat-raised-button color="primary"
+                        *ngIf="!user?.learned?.lesson?.includes(lesson?._id) && lesson?._id !== isTrueNextLessonId"
+                        [disabled]="!user?.learned?.lesson?.includes(lesson?._id) && lesson?._id !== isTrueNextLessonId"
+                        routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
+                        <span>Chưa mở</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

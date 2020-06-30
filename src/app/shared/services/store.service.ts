@@ -19,6 +19,10 @@ export class StoreService {
         return this.get('user')._id;
     }
 
+    get getCurrentLessonId() {
+        return this.get('user').learned.lesson[this.get('user').learned.lesson.length - 1];
+    }
+
     get(key: string) {
         const value = localStorage.getItem(key);
         try {

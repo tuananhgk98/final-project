@@ -25,9 +25,9 @@
         <div class="login-button">
           <button mat-raised-button type="submit" color="primary" [disabled]="loginForm.invalid" (click)="login();">Đăng
             nhập
-            <i class="fa fa-spinner fa-spin m-r-5" *ngIf="isLoading"></i>
+            <i class="fa fa-spinner fa-spin m-r-5" *ngIf="loading"></i>
           </button>
-          <p>Quên mật khẩu ?</p>
+          <a class="mt-2 text-primary cursor-pointer" (click)="forgotPwd()">Quên mật khẩu ?</a>
           <button class="w-100 btn btn-success" (click)="loginWithGoogle()">Đăng nhập với
             Google</button>
         </div>

@@ -44,4 +44,8 @@ export class CourseService {
   createLesson(body): Observable<any> {
     return this.http.post<any>(`course/lesson`, body);
   }
+
+  updateLesson(lessonId : string, body : any) : Observable<any> {
+    return this.http.put<any>(`course/lesson/${lessonId}`, body);
+  }
 }

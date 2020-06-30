@@ -13,8 +13,11 @@
 .profile-info {
   box-shadow: 5px 5px 10px #d9d9d9;
   padding: 20px;
-  width: 46%;
+  width: 100%;
   margin-top: 30px;
+  h3 {
+    text-align: center;
+  }
 }
 
 .avatar {
@@ -25,13 +28,15 @@
 img {
   border-radius: 100%;
 }
-
-.info {
-  padding: 10px 20px;
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
 }
-
-.profile-schools {
-  width: 46%;
+.info {
+  width: 48%;
+  padding: 10px 20px;
 }
 
 .input-group {
@@ -54,5 +59,9 @@ img {
 }
 
 .change-pwd {
-  width: 100%;
+  width: 48%;
+  padding: 10px 20px;
+}
+.btn {
+  margin-right: 20px;
 }

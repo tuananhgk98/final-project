@@ -4,43 +4,45 @@
     <div class="avatar">
       <img src="https://lh3.googleusercontent.com/a-/AAuE7mBi0PdaRt7dtsUqKXX8aJBmtXwKRveWdjUA-PAl" alt="" width="100px">
     </div>
-    <div class="info">
-      <div class="input-group">
-        <label for="">Họ và tên</label>
-        <input type="text" placeholder="Name">
+    <div class="form">
+      <div class="info">
+        <div class="input-group">
+          <label for="">Họ và tên</label>
+          <input type="text" placeholder="Name">
+        </div>
+        <div class="input-group">
+          <label for="">Email</label>
+          <input type="email" placeholder="Your Email">
+        </div>
+        <div class="input-group">
+          <label for="">Số điện thoại</label>
+          <input type="number" placeholder="Phone Number">
+        </div>
+        <div class="input-group">
+          <label for="">Ngày sinh</label>
+          <input type="text" placeholder="Date of birth">
+        </div>
+        <div class="input-group">
+          <label for="">Thành phố</label>
+          <input type="text" placeholder="City">
+        </div>
+        <div class="input-group">
+          <label for="">Github URL</label>
+          <input type="text" placeholder="URL">
+        </div>
+        <button mat-raised-button type="button">Lưu</button>
       </div>
-      <div class="input-group">
-        <label for="">Email</label>
-        <input type="email" placeholder="Your Email">
+      <div class="change-pwd">
+        <h5>Đổi mật khẩu</h5>
+        <div class="input-group">
+          <label for="">Mật khẩu mới</label>
+          <input type="text" placeholder="Enter password">
+        </div>
+        <button mat-raised-button type="button">Đổi</button>
       </div>
-      <div class="input-group">
-        <label for="">Số điện thoại</label>
-        <input type="number" placeholder="Phone Number">
-      </div>
-      <div class="input-group">
-        <label for="">Ngày sinh</label>
-        <input type="text" placeholder="Date of birth">
-      </div>
-      <div class="input-group">
-        <label for="">Thành phố</label>
-        <input type="text" placeholder="City">
-      </div>
-      <div class="input-group">
-        <label for="">Github URL</label>
-        <input type="text" placeholder="URL">
-      </div>
-      <button class="btn btn-primary" type="button">Lưu</button>
-    </div>
-    <div class="change-pwd">
-      <h5>Đổi mật khẩu</h5>
-      <div class="input-group">
-        <label for="">Mật khẩu mới</label>
-        <input type="text" placeholder="Enter password">
-      </div>
-      <button class="btn btn-primary" type="button">Đổi</button>
     </div>
   </div>
-  <div class="profile-schools">
+  <!-- <div class="profile-schools">
     <div class="add-info">
       <h4>Các trường đã học</h4>
       <div *ngIf="showSchoolInfo">
@@ -107,6 +109,6 @@
         <button class="btn btn-light" type="button" (click)="showSkill = false">Huỷ</button>
       </div>
     </div>
-  </div>
+  </div> -->
 
 </div>

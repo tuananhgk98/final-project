@@ -1,52 +1,53 @@
-<mat-card class="mt-5">
+<mat-card class="mt-5 exc_create">
     <mat-card-title>Tạo bài tập cho bài học : {{lesson?.name}}</mat-card-title>
-    <mat-card-content>
+    <mat-card-content class="mat_card_content">
         <form [formGroup]="form">
             <div formArrayName="exArray" *ngIf="exArray?.length">
                 <div *ngFor="let ex of exArray.controls; index as index">
-                    <div [formGroupName]="index">
-                        <mat-form-field>
+                    <div class="form_group" [formGroupName]="index">
+                        <mat-form-field class="question_header">
                             <mat-label>Câu hỏi</mat-label>
-                            <input matInput formControlName="question">
+                            <textarea matInput formControlName="answer"> </textarea>
                         </mat-form-field>
-                        <div formGroupName="answer1" fxLayout="row wrap">
+                        <div class="form_question" formGroupName="answer1" fxLayout="row wrap">
                             <mat-form-field>
                                 <mat-label>Câu trả lời 1</mat-label>
-                                <input matInput formControlName="answer">
+                                <textarea matInput formControlName="answer"> </textarea>
                             </mat-form-field>
                             <section class="example-section">
                                 <mat-checkbox class="example-margin">Đáp án đúng</mat-checkbox>
                             </section>
                         </div>
-                        <div formGroupName="answer2">
+                        <div class="form_question" formGroupName="answer2">
                             <mat-form-field>
                                 <mat-label>Câu trả lời 2</mat-label>
-                                <input matInput formControlName="answer">
+                                <textarea matInput formControlName="answer"> </textarea>
                             </mat-form-field>
                             <section class="example-section">
                                 <mat-checkbox class="example-margin">Đáp án đúng</mat-checkbox>
                             </section>
                         </div>
-                        <div formGroupName="answer3">
+                        <div class="form_question" formGroupName="answer3">
                             <mat-form-field>
                                 <mat-label>Câu trả lời 3</mat-label>
-                                <input matInput formControlName="answer">
+                                <textarea matInput formControlName="answer"> </textarea>
                             </mat-form-field>
                             <section class="example-section">
                                 <mat-checkbox class="example-margin">Đáp án đúng</mat-checkbox>
                             </section>
                         </div>
-                        <div formGroupName="answer4">
+                        <div class="form_question" formGroupName="answer4">
                             <mat-form-field>
                                 <mat-label>Câu trả lời 4</mat-label>
-                                <input matInput formControlName="answer">
+                                <textarea matInput formControlName="answer"> </textarea>
+
                             </mat-form-field>
                             <section class="example-section">
                                 <mat-checkbox class="example-margin">Đáp án đúng</mat-checkbox>
                             </section>
                         </div>
                         <div>
-                            <mat-form-field>
+                            <mat-form-field class="question_answer">
                                 <mat-label>Lời giải</mat-label>
                                 <textarea matInput formControlName="note"> </textarea>
                             </mat-form-field>
@@ -54,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div fxLayout="row wrap" fxLayoutAlign="end end">
+            <div class="confirm_btn" fxLayout="row wrap" fxLayoutAlign="end end">
                 <button mat-raised-button color="primary" (click)="submit()">Tạo</button>
             </div>
         </form>

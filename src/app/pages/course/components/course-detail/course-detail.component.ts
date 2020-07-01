@@ -18,7 +18,6 @@ export class CourseDetailComponent implements OnInit {
   userId : string;
   user : any = [];
   isTrueNextLessonId :string;
-  firstLessonId : string;
   currentLessonId : string;
   constructor(
     private courseService: CourseService,
@@ -45,7 +44,6 @@ export class CourseDetailComponent implements OnInit {
         if (payload.ok) {
           this.lessonList = payload.data;
           const num = this.lessonList.find(lesson => lesson._id === this.currentLessonId).num;
-          this.firstLessonId = this.lessonList[0]._id;
           this.isTrueNextLessonId = this.lessonList.find(lesson => lesson.num -1 === num)._id;
         }
       }
@@ -53,8 +51,5 @@ export class CourseDetailComponent implements OnInit {
     this.courseService.list().subscribe(payload => {
       this.course = payload.data.find(course => course._id === this.courseId);
     });
-
-
   }
-
 }

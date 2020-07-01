@@ -22,7 +22,7 @@
                     {{lesson?.content}}
                 </p>
                 <div *ngIf="user && user.learned">
-                    <button style="width : 140px" mat-raised-button color="primary" *ngIf="!user?.learned?.lesson?.includes(lesson?._id) && lesson?._id === firstLessonId"
+                    <button style="width : 140px" mat-raised-button color="primary" *ngIf="!user?.learned?.lesson?.includes(lesson?._id) && lesson?.num === 0"
                         routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
                         <span>Bắt đầu</span>
                     </button>
@@ -35,7 +35,7 @@
                         <span>Xem lại</span>
                     </button>
                     <button style="width : 140px" mat-raised-button color="primary"
-                        *ngIf="!user?.learned?.lesson?.includes(lesson?._id) && lesson?._id !== isTrueNextLessonId"
+                        *ngIf="!user?.learned?.lesson?.includes(lesson?._id) && lesson?.num !== 0 && lesson?._id !== isTrueNextLessonId"
                         [disabled]="!user?.learned?.lesson?.includes(lesson?._id) && lesson?._id !== isTrueNextLessonId"
                         routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
                         <span>Chưa mở</span>

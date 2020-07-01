@@ -1,106 +1,59 @@
+<form [formGroup]="form">
 <div class="profile">
   <div class="profile-info">
     <h3>Thông tin cá nhân</h3>
     <div class="avatar">
-      <img src="https://lh3.googleusercontent.com/a-/AAuE7mBi0PdaRt7dtsUqKXX8aJBmtXwKRveWdjUA-PAl" alt="" width="100px">
+      <img [src]="user?.imageUrl" alt="" width="100px">
     </div>
     <div class="form">
       <div class="info">
         <div class="input-group">
-          <label for="">Họ và tên</label>
-          <input type="text" placeholder="Name">
+          <mat-form-field>
+            <mat-label>Họ và tên</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
         </div>
         <div class="input-group">
-          <label for="">Email</label>
-          <input type="email" placeholder="Your Email">
+          <mat-form-field>
+            <mat-label>Tên tài khoản</mat-label>
+            <input matInput formControlName="userName">
+          </mat-form-field>
         </div>
         <div class="input-group">
-          <label for="">Số điện thoại</label>
-          <input type="number" placeholder="Phone Number">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+          </mat-form-field>
         </div>
         <div class="input-group">
-          <label for="">Ngày sinh</label>
-          <input type="text" placeholder="Date of birth">
+          <mat-form-field>
+            <mat-label>Số điện thoại</mat-label>
+            <input matInput formControlName="phone">
+          </mat-form-field>
         </div>
-        <button mat-raised-button type="button">Lưu</button>
+        <!-- <div class="input-group">
+          <mat-form-field>
+            <mat-label>Ngày sinh</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div> -->
+        <button mat-raised-button color="primary" style="width : 100px" type="button" (click)="updateInfo()">Lưu
+        <i class="fa fa-spinner fa-spin ml-2" *ngIf="updating"></i>
+        </button>
       </div>
       <div class="change-pwd">
         <h5>Đổi mật khẩu</h5>
         <div class="input-group">
-          <label for="">Mật khẩu mới</label>
-          <input type="text" placeholder="Enter password">
+          <mat-form-field>
+            <mat-label>Mật khẩu</mat-label>
+            <input matInput formControlName="pwd" [type]="hide ? 'password' : 'text'">
+            <button matSuffix style="background : none !important; border:none !important" (click)="hide = !hide"><i [ngClass]="hide ? 'fa fa-eye' : 'fa fa-eye-slash'" style="cursor: pointer;z-index:9999"></i></button>
+          </mat-form-field>
         </div>
-        <button mat-raised-button type="button">Đổi</button>
+        <button mat-raised-button color="primary" (click)="updatePwd();" style="width: 100px;" type="button">Đổi
+          <i class="fa fa-spinner fa-spin ml-2" *ngIf="updatingPwd"></i></button>
       </div>
     </div>
   </div>
-  <!-- <div class="profile-schools">
-    <div class="add-info">
-      <h4>Các trường đã học</h4>
-      <div *ngIf="showSchoolInfo">
-        <div class="input-group">
-          <label for="">Tên Trường</label>
-          <input type="text" placeholder="...">
-        </div>
-        <div class="input-group">
-          <label for="">Chuyên ngành</label>
-          <input type="text" placeholder="...">
-        </div>
-        <div class="input-group">
-          <label for="">Cấp học</label>
-          <input type="text" placeholder="...">
-        </div>
-        <div class="input-group">
-          <label for="">Năm tốt nghiệp</label>
-          <input type="text" placeholder="...">
-        </div>
-      </div>
-      <button *ngIf="!showSchoolInfo" class="btn btn-primary" type="button" (click)="showSchoolInfo= true">Thêm</button>
-      <div class="group-btn" *ngIf="showSchoolInfo">
-        <button class="btn btn-primary" type="button">Lưu</button>
-        <button class="btn btn-light" type="button" (click)="showSchoolInfo= false">Huỷ</button>
-      </div>
-    </div>
-    <div class="add-info">
-      <h4>Các project đã làm</h4>
-      <div *ngIf="showProject">
-        <div class="input-group">
-          <label for="">Tên Project</label>
-          <input type="text" placeholder="...">
-        </div>
-        <div class="input-group">
-          <label for="">URL</label>
-          <input type="text" placeholder="URL">
-        </div>
-        <div class="input-group">
-          <label for="">Mô tả</label>
-          <input type="text" placeholder="...">
-        </div>
-      </div>
-      <button *ngIf="!showProject" class="btn btn-primary" type="button" (click)="showProject = true">Thêm</button>
-      <div class="group-btn" *ngIf="showProject">
-        <button class="btn btn-primary" type="button">Lưu</button>
-        <button class="btn btn-light" type="button" (click)="showProject = false">Huỷ</button>
-      </div>
-    </div>
-    <div class="add-info">
-      <h4>Skills</h4>
-      <div *ngIf="showSkill">
-        <div class="input-group">
-          <label for="">Tên skill</label>
-          <input type="text" placeholder="...">
-        </div>
-        <div class="input-group">
-          <label for="">Số năm kinh nghiệm</label>
-          <input type="text" placeholder="...">
-        </div>
-      </div>
-      <button *ngIf="!showSkill" class="btn btn-primary" type="button" (click)="showSkill = true">Thêm</button>
-      <div class="group-btn" *ngIf="showSkill">
-        <button class="btn btn-primary" type="button">Lưu</button>
-        <button class="btn btn-light" type="button" (click)="showSkill = false">Huỷ</button>
-      </div>
-    </div>
-  </div> -->
-
 </div>
+</form>

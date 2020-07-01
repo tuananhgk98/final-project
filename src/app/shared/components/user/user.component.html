@@ -4,7 +4,7 @@
     <button mat-menu-item style="outline: none;" routerLink="/pages/my-info">
       {{user?.name}}
     </button>
-    <button mat-menu-item style="outline: none;" routerLink="/pages/my-info">
+    <button mat-menu-item style="outline: none;" routerLink="/pages/my-info/{{user?._id}}">
       <mat-icon>account_circle</mat-icon> Trang cá nhân
     </button>
     <button mat-menu-item style="outline: none;" (click)="logOut()">

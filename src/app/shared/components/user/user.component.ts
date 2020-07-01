@@ -3,6 +3,8 @@ import { StoreService } from '../../services/store.service';
 import { IUser } from '../../interface/user.interface';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/login/services/login.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,13 +17,17 @@ export class UserComponent implements OnInit {
   constructor(
     private storeService: StoreService,
     private loginService: LoginService,
-    private router: Router
-  ) { }
-  user: IUser;
+    private router: Router,
+    private snackBar : MatSnackBar,
+    private fb : FormBuilder
+  ) {
+    this.user = this.storeService.getUser;
+   }
+  user: any;
+  form : FormGroup;
+  
   ngOnInit(): void {
-    this.loginService.currentUser.subscribe((user: IUser) => {
-      this.user = user ? user : this.storeService.get('user');
-    });
+  
   }
 
   logOut() {

@@ -17,7 +17,15 @@ export class UserService {
         return this.http.get<any>(`user/${userId}`)
     }
 
-    forgotPwd(body) : Observable<any> {
+    update(userId: string, body: any): Observable<any> {
+        return this.http.put<any>(`user/${userId}`, body);
+    }
+
+    updatePwd(userId: string, body: any): Observable<any> {
+        return this.http.put<any>(`user/updatePwd/${userId}`, body);
+    }
+
+    forgotPwd(body): Observable<any> {
         return this.http.put<any>('user/forgotPwd', body);
     }
 

@@ -18,7 +18,7 @@ const routes: Routes = [
       },
 
       {
-        path: 'my-info',
+        path: 'my-info/:userId',
         component: UserInfoComponent
       },
       {

@@ -4,6 +4,8 @@ import { CourseService } from '../../course.service';
 import { finalize } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogService } from 'src/app/shared/services/dialog.service';
+import { UserService } from 'src/app/shared/services/user.service';
+import { StoreService } from 'src/app/shared/services/store.service';
 
 @Component({
   selector: 'app-course-list',
@@ -15,11 +17,17 @@ export class CourseListComponent implements OnInit {
   constructor(
     private courseService: CourseService,
     private snackBar: MatSnackBar,
-    private dialogService: DialogService
-  ) { }
+    private dialogService: DialogService,
+    private userService: UserService,
+    private storeService: StoreService
+  ) {
+
+  }
   loading: boolean;
   displayedColumns: string[] = ['_no', 'action', 'id', 'name', 'lessonNum'];
   dataSource: any;
+  currentCourseId: string;
+  user: any;
 
   ngOnInit(): void {
     this.loadData();

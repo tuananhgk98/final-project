@@ -1,10 +1,61 @@
-<div class="course__list">
+<div class="course__list" *ngIf="user">
     <app-loading *ngIf="loading"></app-loading>
     <h3 class="list__title">Khóa học tự do</h3>
     <div class="list__des" *ngFor="let course of courseList">
-        <div class="des__header">
+        <div class="des__header" *ngIf="currentLearnedCourse">
             <h4>{{course?.tag}}</h4>
-            <button style="width : 140px" mat-raised-button color="primary" routerLink="/pages/course/{{course?._id}}">Tham gia</button>
+
+            <button style="width : 140px" mat-raised-button color="primary"
+                *ngIf="!getCourseInLearned(course?._id) && course?.num === 1 && currentLearnedCourse?.lesson?.length === 0"
+                (click)="joinCourse(course?._id)">Tham gia</button>
+
+            <button style="width : 140px" mat-raised-button color="primary"
+                *ngIf="getCourseInLearned(course?._id) && course?.num === 1 && getCourseInLearned(courseList[0]?._id)?.lesson?.length === 0"
+                (click)="joinCourse(course?._id)">Tham gia</button>
+
+                <button style="width : 140px" mat-raised-button color="primary"
+                *ngIf="getCourseInLearned(course?._id) && currentLearnedCourse?.lesson?.length === 0 && getCourseInLearned(course?._id)?.lesson?.length === 0"
+                (click)="joinCourse(course?._id)">Tham gia</button>
+
+            <!-- <button style="width : 140px" mat-raised-button color="primary"
+                *ngIf="!getCourseInLearned(course?._id) && course?._id === isTrueNextCourseId && currentLearnedCourse?.lesson?.length !== 0 && currentLearnedCourse?.lesson?.length < getCourse(currentCourseId)?.lessonCount"
+                (click)="joinCourse(course?._id)">
+                Tham gia</button> -->
+
+                <button style="width : 140px" mat-raised-button color="primary"
+                *ngIf="!getCourseInLearned(course?._id) && course?._id === isTrueNextCourseId && currentLearnedCourse?.lesson?.length !== 0 && currentLearnedCourse?.lesson?.length == getCourse(currentCourseId)?.lessonCount"
+                (click)="joinCourse(course?._id)">
+                Tham gia</button>
+
+
+            <button style="width : 140px" mat-raised-button color="primary" routerLink="/pages/course/{{course?._id}}"
+                *ngIf="getCourseInLearned(course?._id) && getCourseInLearned(course?._id).lesson.length !== 0 && getCourseInLearned(course?._id).lesson.length < course.lessonCount">Tiếp
+                tục</button>
+
+            
+
+            <button style="width : 140px" mat-raised-button color="primary"
+                *ngIf="!getCourseInLearned(course?._id) && course?._id === isTrueNextCourseId && currentLearnedCourse?.lesson?.length < getCourse(currentCourseId)?.lessonCount"
+                [disabled]="!getCourseInLearned(course?._id) && course?._id === isTrueNextCourseId">Chưa
+                mở</button>
+
+
+            <button style="width : 140px" mat-raised-button color="primary" routerLink="/pages/course/{{course?._id}}"
+                *ngIf="getCourseInLearned(course?._id) && course?._id !== isTrueNextCourseId && getCourseInLearned(course?._id).lesson.length === course.lessonCount">Xem
+                lại</button>
+
+
+
+
+            <!--   <button style="width : 140px" mat-raised-button color="primary" routerLink="/pages/course/{{course?._id}}"
+                *ngIf="currentLearnedCourse?._id == course?._id && currentLearnedCourse?.lesson?.length === course?.lessonCount">Xem
+                lại</button>
+ -->
+            <button style="width : 140px" mat-raised-button color="primary"
+                *ngIf="!getCourseInLearned(course?._id) && !getCourseInLearned(course?._id) && course?._id !== isTrueNextCourseId"
+                [disabled]="!getCourseInLearned(course?._id) && !getCourseInLearned(course?._id) && course?._id !== isTrueNextCourseId">Chưa
+                mở</button>
+
         </div>
         <div class="des__body">
             <h1>{{course?.name}}</h1>

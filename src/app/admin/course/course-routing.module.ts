@@ -15,13 +15,14 @@ const routes: Routes = [
     component: CourseListComponent
   },
   {
-    path: ':courseId',
-    component: CourseDetailComponent
-  },
-  {
     path: 'create',
     component: CourseCreateComponent
   },
+  {
+    path: ':courseId',
+    component: CourseDetailComponent
+  },
+
   {
     path : ':courseId/lesson',
     component: LessonListComponent

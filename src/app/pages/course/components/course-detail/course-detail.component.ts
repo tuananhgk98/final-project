@@ -15,10 +15,11 @@ export class CourseDetailComponent implements OnInit {
   course: any;
   loading: boolean;
   courseId: any;
-  userId : string;
-  user : any = [];
-  isTrueNextLessonId :string;
-  currentLessonId : string;
+  userId: string;
+  user: any = [];
+  isTrueNextLessonId: string;
+  currentLessonId: string;
+  currentCourse: any;
   constructor(
     private courseService: CourseService,
     private activatedRoute: ActivatedRoute,
@@ -27,7 +28,6 @@ export class CourseDetailComponent implements OnInit {
   ) {
     this.courseId = this.activatedRoute.snapshot.paramMap.get('courseId');
     this.userId = this.storeService.getUserId;
-    this.currentLessonId = this.storeService.getCurrentLessonId;
   }
 
   ngOnInit(): void {
@@ -37,19 +37,29 @@ export class CourseDetailComponent implements OnInit {
   loadData() {
     this.loading = true;
     this.userService.get(this.userId).subscribe(payload => {
-      if(payload.ok) this.user = payload.data;
+      if (payload.ok) this.user = payload.data;
     });
-    this.courseService.listLesson(this.courseId).pipe(finalize(() => this.loading = false)).subscribe(
-      payload => {
-        if (payload.ok) {
-          this.lessonList = payload.data;
-          const num = this.lessonList.find(lesson => lesson._id === this.currentLessonId).num;
-          this.isTrueNextLessonId = this.lessonList.find(lesson => lesson.num -1 === num)._id;
-        }
+    // this.courseService.list().subscribe(payload => {
+    //   this.course = payload.data.find(course => course._id === this.courseId);
+    //   this.currentLessonId = this.storeService.getCurrentLessonId(this.course.num -1);
+    // });
+    // this.courseService.listLesson(this.courseId).pipe(finalize(() => this.loading = false)).subscribe(
+    //   payload => {
+    //     if (payload.ok) {
+    //       this.lessonList = payload.data;
+    //       const num = this.lessonList.find(lesson => lesson._id === this.currentLessonId).num;
+    //       this.isTrueNextLessonId = this.lessonList.find(lesson => lesson.num -1 === num)._id;
+    //     }
+    //   }
+    // );
+    this.courseService.getCourseAndLesson(this.courseId).subscribe(payload => {
+      if (payload.ok) {
+        this.course = payload.data.course;
+        this.lessonList = payload.data.lesson;
+        this.currentLessonId = this.storeService.getCurrentLessonId(this.course.num - 1);
+        const num = payload.data.lesson.find(lesson => lesson._id === this.currentLessonId).num;
+        this.isTrueNextLessonId = payload.data.lesson.find(lesson => lesson.num - 1 === num)._id;
       }
-    );
-    this.courseService.list().subscribe(payload => {
-      this.course = payload.data.find(course => course._id === this.courseId);
     });
   }
 }

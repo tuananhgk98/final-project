@@ -54,7 +54,18 @@ export class LoginComponent {
 
   loginWithGoogle() {
     this.socialLogin.login(Provider.GOOGLE).subscribe(user => {
-      console.log(user);
+      const body = {
+        name: user.name,
+        imageUrl: user.profileImg,
+        email: user.email
+      };
+      this.loginService.register(body).pipe(finalize(() => this.loading = false)).subscribe(async payload => {
+        if (payload.ok) {
+          await this.storeService.set('user', payload.data);
+          await this.router.navigateByUrl('/pages/course');
+          this.snackBar.open(`Xin chào ${payload.data.name}`, 'Bỏ qua', { duration: 3000 });
+        }
+      });
     });
   }
 

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { StoreService } from 'src/app/shared/services/store.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -25,6 +26,7 @@ export class LessonsComponent implements OnInit {
   isShow: boolean = false;
   lesson: any;
   course: any;
+  exList : any[] = [];
   youtubeUrl: any;
   lessonId: string;
   courseId: string;
@@ -50,7 +52,8 @@ export class LessonsComponent implements OnInit {
     public sanitizer: DomSanitizer,
     private router: Router,
     private storeService: StoreService,
-    private userService: UserService
+    private userService: UserService,
+    private snackBar : MatSnackBar
   ) {
     this.lessonForm = this.formBuilder.group({
       code: ['', Validators.required]
@@ -69,6 +72,7 @@ export class LessonsComponent implements OnInit {
     this.courseService.getLesson(this.lessonId).subscribe(payload => {
       if (payload.ok) {
         this.lesson = payload.data;
+        this.exList = this.lesson.exercise;
         this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.lesson.youtubeUrl);
       }
     });
@@ -107,12 +111,12 @@ export class LessonsComponent implements OnInit {
     });
   }
 
-  nextLesson(currentLessonId: string) {
+  nextLesson(currentLessonId: string, lessonIndex: number) {
     this.courseService.listLesson(this.courseId).subscribe(payload => {
-      if (payload.ok) {
+      if (payload.ok && lessonIndex !== payload.data.length -1) {
         const nextLessonId = payload.data.find(lesson => lesson.num === this.lesson.num + 1)._id;
-        if (!this.user.learned.lesson.includes(currentLessonId)) {
-          this.user.learned.lesson.push(currentLessonId);
+        if (!this.user.learned[this.course.num - 1].lesson.includes(currentLessonId)) {
+          this.user.learned[this.course.num - 1].lesson.push(currentLessonId);
         }
         this.userService.updateLearned(this.userId, this.user.learned).subscribe(payload => {
           if (payload.ok) {
@@ -121,6 +125,18 @@ export class LessonsComponent implements OnInit {
         });
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
           this.router.navigate([`/pages/course/${this.courseId}/lesson/${nextLessonId}`]));
+      }
+      if (payload.ok && lessonIndex === payload.data.length - 1) {
+        if (!this.user.learned[this.course.num - 1].lesson.includes(currentLessonId)) {
+          this.user.learned[this.course.num - 1].lesson.push(currentLessonId);
+        }
+        this.userService.updateLearned(this.userId, this.user.learned).subscribe(payload => {
+          if (payload.ok) {
+            this.storeService.set('user', payload.data);
+          }
+        });
+        this.snackBar.open(`Chúc mừng bạn đã hoàn thành khoá học này, liệu bạn đã sẵn sàng cho khoá học tiếp theo?`, 'Bỏ qua', { duration: 3000 });
+        this.router.navigateByUrl('/pages/course');
       }
     });
   }

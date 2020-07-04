@@ -22,24 +22,24 @@
                     {{lesson?.content}}
                 </p>
                 <div *ngIf="user && user.learned">
-                    <button style="width : 140px" mat-raised-button color="primary" *ngIf="!user?.learned?.lesson?.includes(lesson?._id) && lesson?.num === 0"
+                    <button style="width : 140px" mat-raised-button color="primary" *ngIf="!user?.learned[course?.num -1]?.lesson?.includes(lesson?._id) && lesson?.num === 0"
                         routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
                         <span>Bắt đầu</span>
                     </button>
-                    <button style="width : 140px" mat-raised-button color="primary" *ngIf="lesson?._id === isTrueNextLessonId"
+                   <button style="width : 140px" mat-raised-button color="primary" *ngIf="lesson?._id === isTrueNextLessonId"
                     routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
                     <span>Bắt đầu</span>
-                </button>
-                    <button style="width : 140px" mat-stroked-button color="primary" *ngIf="user?.learned?.lesson?.includes(lesson?._id)"
+                  </button>
+                    <button style="width : 140px" mat-stroked-button color="primary" *ngIf="user?.learned[course?.num -1]?.lesson?.includes(lesson?._id)"
                         routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
                         <span>Xem lại</span>
                     </button>
-                    <button style="width : 140px" mat-raised-button color="primary"
-                        *ngIf="!user?.learned?.lesson?.includes(lesson?._id) && lesson?.num !== 0 && lesson?._id !== isTrueNextLessonId"
-                        [disabled]="!user?.learned?.lesson?.includes(lesson?._id) && lesson?._id !== isTrueNextLessonId"
+                 <button style="width : 140px" mat-raised-button color="primary"
+                        *ngIf="!user?.learned[course?.num -1]?.lesson?.includes(lesson?._id) && lesson?.num !== 0 && lesson?._id !== isTrueNextLessonId"
+                        [disabled]="!user?.learned[course?.num -1]?.lesson?.includes(lesson?._id) && lesson?._id !== isTrueNextLessonId"
                         routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
                         <span>Chưa mở</span>
-                    </button>
+                    </button> 
                 </div>
             </div>
         </div>

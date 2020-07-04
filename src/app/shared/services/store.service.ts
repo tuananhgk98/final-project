@@ -19,8 +19,9 @@ export class StoreService {
         return this.get('user')._id;
     }
 
-    get getCurrentLessonId() {
-        return this.get('user').learned.lesson[this.get('user').learned.lesson.length - 1];
+    getCurrentLessonId(index) {
+        const lesson = this.getUser.learned[index].lesson;
+        return lesson[lesson.length - 1];
     }
 
     get(key: string) {

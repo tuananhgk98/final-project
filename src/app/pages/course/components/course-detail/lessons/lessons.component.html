@@ -5,7 +5,7 @@
         <h4>{{course?.name}}</h4>
         <h1>Bài {{lesson?.num}} : {{lesson?.name}}</h1>
         <h3>{{lesson?.content}}</h3>
-      </div> 
+      </div>
       <iframe width="560" height="315" [src]="youtubeUrl" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
@@ -13,9 +13,21 @@
       <h4>Bài tập</h4>
       <button class="btn btn-primary" (click)="$event.preventDefault();showTestCase()"> Làm bài tập</button>
     </div>
-    <div class="d-flex justify-content-end mt-3 mr-2">
-      <button mat-raised-button color="primary" (click)="nextLesson(lesson?._id)">Bài tiếp theo</button>
+    <div class="mt-5">
+      <div *ngFor="let ex of lesson?.exercise, index as exIndex">
+        <p>Câu hỏi {{exIndex + 1}} : {{ex?.question}}</p>
+        <div class="ml-5">
+          <p>Đáp án 1 : {{ex?.answer1?.answer}}</p>
+          <p>Đáp án 2 : {{ex?.answer2?.answer}}</p>
+          <p>Đáp án 3 : {{ex?.answer3?.answer}}</p>
+          <p>Đáp án 4 : {{ex?.answer4?.answer}}</p>
+        </div>
+      </div>
     </div>
+    <div class="d-flex justify-content-end mt-3 mr-2">
+      <button mat-raised-button color="primary" (click)="nextLesson(lesson?._id, lesson?.num)">Bài tiếp theo</button>
+    </div>
+
   </div>
   <div class="practice-page" *ngIf="isShow">
     <div class="code-area">
@@ -43,7 +55,8 @@
         <button class="btn btn-primary"><i class="fas fa-broom"></i></button>
         <div>
           <button class="btn btn-success">Lưu</button>
-          <button class="btn btn-primary mx-1" (click)="$event.preventDefault();execute(lessonForm.get('code').value, testCase)">Chạy thử</button>
+          <button class="btn btn-primary mx-1"
+            (click)="$event.preventDefault();execute(lessonForm.get('code').value, testCase)">Chạy thử</button>
         </div>
       </div>
     </div>

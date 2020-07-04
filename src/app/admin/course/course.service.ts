@@ -17,6 +17,14 @@ export class CourseService {
     return this.http.get<any>('course');
   }
 
+  getCourseAndLesson(courseId : string) : Observable<any> {
+    return this.http.get<any>(`course/courseAndLesson/${courseId}`);
+  }
+
+  createExercise(lessonId, body) : Observable<any> {
+    return this.http.put<any>(`course/lesson/${lessonId}/exercise-create`, body);
+  }
+
   create(body): Observable<any> {
     return this.http.post<any>('course', body);
   }

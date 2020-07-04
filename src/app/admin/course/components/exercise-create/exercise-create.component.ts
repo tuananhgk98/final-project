@@ -32,14 +32,15 @@ export class ExerciseCreateComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
     if (!this.exArray.length) {
-     this.addQuestion();
+      this.addQuestion();
     }
   }
 
-  addQuestion(){
+  addQuestion() {
     this.exArray.push(this.fb.group({
+      _id: [Math.random().toString(36).substring(7)],
       question: [''],
-      note : [''],
+      note: [''],
       answer1: this.fb.group({
         answer: ['', Validators.required],
         isCorrect: []
@@ -59,6 +60,13 @@ export class ExerciseCreateComponent implements OnInit {
     }));
   }
 
+  updateIsCorrect(answerNumber : number){
+    for(let i of [1, 2, 3, 4]){
+      this.exArray.controls[0].get(`answer${i}.isCorrect`).patchValue(null);
+    }
+    this.exArray.controls[0].get(`answer${answerNumber}.isCorrect`).patchValue(true);
+  }
+
   public get exArray() {
     return this.form.get('exArray') as FormArray;
   }
@@ -71,8 +79,11 @@ export class ExerciseCreateComponent implements OnInit {
     });
   }
 
-  submit(){
-    console.log(this.form.get('exArray').value);
+  submit() {
+    this.courseService.createExercise(this.lessonId, this.exArray.value).subscribe(payload => {
+      if(payload.ok){
+      }
+    });
   }
 
 }

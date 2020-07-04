@@ -17,9 +17,9 @@ export class UserInfoComponent implements OnInit {
   showSkill: boolean = false;
   form: FormGroup;
   user: any;
-  userId : string;
+  userId: string;
   updating: boolean;
-  updatingPwd : boolean;
+  updatingPwd: boolean;
   hide = true;
   constructor(
     private storeService: StoreService,
@@ -32,7 +32,7 @@ export class UserInfoComponent implements OnInit {
       name: [''],
       pwd: [''],
       email: [''],
-      userName: [{value : '', disabled : true}],
+      userName: [{ value: '', disabled: true }],
       imageUrl: [''],
       phone: ['']
     });
@@ -43,31 +43,31 @@ export class UserInfoComponent implements OnInit {
     this.loadData();
   }
 
-  loadData(){
+  loadData() {
     this.userService.get(this.userId).subscribe(payload => {
-      if(payload.ok) {
+      if (payload.ok) {
         this.user = payload.data;
         this.form.patchValue(this.user);
-        this.storeService.set('user', this.user);
       }
     })
   }
 
-  updateInfo(){
+  updateInfo() {
     this.updating = true;
     this.userService.update(this.user._id, this.form.value).pipe(finalize(() => this.updating = false)).subscribe(payload => {
-        if(payload.ok){
-          this.loadData();
-          this.snackBar.open('Cập nhật thành công', 'Bỏ qua', { duration: 3000 });
-        }
+      if (payload.ok) {
+        this.loadData();
+        this.storeService.set('user', this.user);
+        this.snackBar.open('Cập nhật thành công', 'Bỏ qua', { duration: 3000 });
+      }
     });
   }
 
-  updatePwd(){
+  updatePwd() {
     this.updatingPwd = true;
-    const body = {pwd : this.form.value.pwd};
+    const body = { pwd: this.form.value.pwd };
     this.userService.updatePwd(this.user._id, body).pipe(finalize(() => this.updatingPwd = false)).subscribe(payload => {
-      if(payload.ok){
+      if (payload.ok) {
         this.loadData();
         this.snackBar.open('Cập nhật mật khẩu thành công', 'Bỏ qua', { duration: 3000 });
       }

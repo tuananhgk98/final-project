@@ -6,8 +6,8 @@
             <li [ngClass]="routeSnapshot.includes('course') ? 'li-active' : ''" routerLink="/pages/course">Khoá học</li>
             <li>MentorX</li>
             <li>Bạn bè</li>
-            <li (click)="callConfig(config)">Nút gọi điện thoại</li>
-            <li (click)="test()">Nút close đóng pop up</li>
+            <li (click)="callConfig(config)">Gọi</li>
+            <li (click)="close()">Close</li>
         </ul>
     </div>
     <app-user></app-user>

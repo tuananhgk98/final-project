@@ -137,7 +137,7 @@ export class HeaderComponent implements OnInit {
       console.log('customMessage', data);
     });
   }
-  test() {
+  close() {
     StringeeSoftPhone.init(this.closeConfig);
   }
 }

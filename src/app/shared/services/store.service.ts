@@ -19,6 +19,10 @@ export class StoreService {
         return this.get('user')._id;
     }
 
+    get getRole(){
+        return this.get('user').role;
+    }
+
     getCurrentLessonId(index) {
         const lesson = this.getUser.learned[index].lesson;
         return lesson[lesson.length - 1];

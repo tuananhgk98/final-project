@@ -82,6 +82,7 @@ export class ExerciseCreateComponent implements OnInit {
   submit() {
     this.courseService.createExercise(this.lessonId, this.exArray.value).subscribe(payload => {
       if(payload.ok){
+        // this.router.navigateByUrl('')
       }
     });
   }

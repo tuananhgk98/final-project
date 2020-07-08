@@ -17,10 +17,41 @@
       <div *ngFor="let ex of lesson?.exercise, index as exIndex">
         <p>Câu hỏi {{exIndex + 1}} : {{ex?.question}}</p>
         <div class="ml-5">
-          <p>Đáp án 1 : {{ex?.answer1?.answer}}</p>
-          <p>Đáp án 2 : {{ex?.answer2?.answer}}</p>
+          <div fxLayOut="row wrap">
+            <p>Đáp án 1 : {{ex?.answer1?.answer}} <mat-radio-group [name]="ex?._id" class="example-section"
+                aria-label="Select an option">
+                <mat-radio-button (click)="do(ex?._id, 'answer1')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
+              </mat-radio-group>
+            </p>
+
+          </div>
+          <div fxLayOut="row wrap">
+            <p>Đáp án 2 : {{ex?.answer2?.answer}} <mat-radio-group [name]="ex?._id" class="example-section"
+                aria-label="Select an option">
+                <mat-radio-button (click)="do(ex?._id, 'answer2')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
+              </mat-radio-group>
+            </p>
+
+          </div>
+          <div fxLayOut="row wrap">
+            <p>Đáp án 3 : {{ex?.answer3?.answer}} <mat-radio-group [name]="ex?._id" class="example-section"
+                aria-label="Select an option">
+                <mat-radio-button (click)="do(ex?._id, 'answer3')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
+              </mat-radio-group>
+            </p>
+
+          </div>
+          <div fxLayOut="row wrap">
+            <p>Đáp án 4 : {{ex?.answer4?.answer}} <mat-radio-group [name]="ex?._id" class="example-section"
+                aria-label="Select an option">
+                <mat-radio-button (click)="do(ex?._id, 'answer4')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
+              </mat-radio-group>
+            </p>
+
+          </div>
+          <!-- <p>Đáp án 2 : {{ex?.answer2?.answer}}</p>
           <p>Đáp án 3 : {{ex?.answer3?.answer}}</p>
-          <p>Đáp án 4 : {{ex?.answer4?.answer}}</p>
+          <p>Đáp án 4 : {{ex?.answer4?.answer}}</p> -->
         </div>
       </div>
     </div>

@@ -26,12 +26,13 @@ export class LessonsComponent implements OnInit {
   isShow: boolean = false;
   lesson: any;
   course: any;
-  exList : any[] = [];
+  exList: any[] = [];
   youtubeUrl: any;
   lessonId: string;
   courseId: string;
   userId: string;
   user: any;
+  done: string[] = [];
   enableNextLesson: boolean;
   editorOptions = { theme: 'vs-dark', language: 'javascript' };
   testCase = [
@@ -53,7 +54,7 @@ export class LessonsComponent implements OnInit {
     private router: Router,
     private storeService: StoreService,
     private userService: UserService,
-    private snackBar : MatSnackBar
+    private snackBar: MatSnackBar
   ) {
     this.lessonForm = this.formBuilder.group({
       code: ['', Validators.required]
@@ -73,6 +74,7 @@ export class LessonsComponent implements OnInit {
       if (payload.ok) {
         this.lesson = payload.data;
         this.exList = this.lesson.exercise;
+        console.log(this.exList);
         this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.lesson.youtubeUrl);
       }
     });
@@ -86,7 +88,9 @@ export class LessonsComponent implements OnInit {
       if (payload.ok) {
         this.user = payload.data;
       }
-    })
+    });
+
+
 
   }
 
@@ -113,7 +117,7 @@ export class LessonsComponent implements OnInit {
 
   nextLesson(currentLessonId: string, lessonIndex: number) {
     this.courseService.listLesson(this.courseId).subscribe(payload => {
-      if (payload.ok && lessonIndex !== payload.data.length -1) {
+      if (payload.ok && lessonIndex !== payload.data.length - 1) {
         const nextLessonId = payload.data.find(lesson => lesson.num === this.lesson.num + 1)._id;
         if (!this.user.learned[this.course.num - 1].lesson.includes(currentLessonId)) {
           this.user.learned[this.course.num - 1].lesson.push(currentLessonId);
@@ -139,6 +143,12 @@ export class LessonsComponent implements OnInit {
         this.router.navigateByUrl('/pages/course');
       }
     });
+  }
+
+  do(exId, answer) {
+    this.done.push(exId);
+    const ex = this.exList.find(i => i._id === exId);
+    
   }
 
 }

@@ -61,8 +61,8 @@ export class LoginComponent {
       };
       this.loginService.register(body).pipe(finalize(() => this.loading = false)).subscribe(async payload => {
         if (payload.ok) {
-          await this.storeService.set('user', payload.data);
-          await this.router.navigateByUrl('/pages/course');
+          this.storeService.set('user', payload.data);
+          await this.router.navigate(['/']);
           this.snackBar.open(`Xin chào ${payload.data.name}`, 'Bỏ qua', { duration: 3000 });
         }
       });

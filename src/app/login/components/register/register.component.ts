@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.isLoading = true;
+    this.registerForm.value.role = 'user';
     this.loginService.register(this.registerForm.value).pipe(finalize(() => this.isLoading = false)).subscribe(data => {
       if (data.ok) {
         this.snackBaz.open(data.msg, 'bỏ qua', { duration: 3000 });

@@ -20,24 +20,27 @@
           <div fxLayOut="row wrap">
             <p>Đáp án 1 : {{ex?.answer1?.answer}} <mat-radio-group [name]="ex?._id" class="example-section"
                 aria-label="Select an option">
-                <mat-radio-button (click)="do(ex?._id, 'answer1')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
+                <mat-radio-button  (click)="do(ex?._id, 'answer1')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
               </mat-radio-group>
+              <i *ngIf="done?.includes(ex?._id) && ex?.answer1?.isCorrect" class="fa fa-check" aria-hidden="true" color="green"></i>
             </p>
 
           </div>
           <div fxLayOut="row wrap">
             <p>Đáp án 2 : {{ex?.answer2?.answer}} <mat-radio-group [name]="ex?._id" class="example-section"
                 aria-label="Select an option">
-                <mat-radio-button (click)="do(ex?._id, 'answer2')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
+                <mat-radio-button  (click)="do(ex?._id, 'answer2')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
               </mat-radio-group>
+              <i *ngIf="done?.includes(ex?._id) && ex?.answer2?.isCorrect" class="fa fa-check" aria-hidden="true" color="green"></i>
             </p>
 
           </div>
           <div fxLayOut="row wrap">
             <p>Đáp án 3 : {{ex?.answer3?.answer}} <mat-radio-group [name]="ex?._id" class="example-section"
                 aria-label="Select an option">
-                <mat-radio-button (click)="do(ex?._id, 'answer3')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
+                <mat-radio-button  (click)="do(ex?._id, 'answer3')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
               </mat-radio-group>
+              <i *ngIf="done?.includes(ex?._id) && ex?.answer3?.isCorrect" class="fa fa-check" aria-hidden="true" color="green"></i>
             </p>
 
           </div>
@@ -46,17 +49,18 @@
                 aria-label="Select an option">
                 <mat-radio-button (click)="do(ex?._id, 'answer4')" [name]="ex?._id" class="example-margin" value="1"></mat-radio-button>
               </mat-radio-group>
+              <i *ngIf="done?.includes(ex?._id) && ex?.answer4?.isCorrect" class="fa fa-check" aria-hidden="true" color="green"></i>
             </p>
-
           </div>
-          <!-- <p>Đáp án 2 : {{ex?.answer2?.answer}}</p>
-          <p>Đáp án 3 : {{ex?.answer3?.answer}}</p>
-          <p>Đáp án 4 : {{ex?.answer4?.answer}}</p> -->
+        <div fxLayOut="row wrap">
+          <a *ngIf="done?.includes(ex?._id)" style="cursor:pointer" class="text-primary" (click)="showNote(ex?._id)">Xem lời giải</a>
+          <p *ngIf="done?.includes(ex?._id) && viewNote?.includes(ex?._id)">{{ex?.note}}</p>
+        </div>
         </div>
       </div>
     </div>
     <div class="d-flex justify-content-end mt-3 mr-2">
-      <button mat-raised-button color="primary" (click)="nextLesson(lesson?._id, lesson?.num)">Bài tiếp theo</button>
+      <button [disabled]="done.length !== exList.length" mat-raised-button color="primary" (click)="nextLesson(lesson?._id, lesson?.num)">Bài tiếp theo</button>
     </div>
 
   </div>

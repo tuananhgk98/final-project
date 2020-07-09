@@ -1,0 +1,62 @@
+<mat-card class="mt-5">
+    <mat-card-title>Tạo bài học cho khoá : HTML for dummies</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <div class="d-flex justify-content-center mt-5">
+                <mat-form-field class="w-50">
+                    <mat-label>
+                       Họ và tên
+                    </mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <mat-form-field class="w-50">
+                    <mat-label>
+                       Email
+                    </mat-label>
+                    <input matInput formControlName="email">
+                </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <mat-form-field class="w-50">
+                    <mat-label>
+                       Tên đăng nhập
+                    </mat-label>
+                    <input matInput formControlName="userName">
+                </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <mat-form-field class="w-50">
+                    <mat-label>
+                      Mật khẩu
+                    </mat-label>
+                    <input matInput formControlName="pwd" type="password">
+                </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <mat-form-field class="w-50">
+                    <mat-label>
+                       số điện thoại
+                    </mat-label>
+                    <input matInput formControlName="phone">
+                </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+              Quyền :
+                <mat-radio-group name="role" class=" ml -5 example-section" aria-label="Select an option">
+                    <mat-radio-button (click)="setValue('role', 'user')" name="role" class="example-margin ml-5 mr-5" value="1">User</mat-radio-button>
+                    <mat-radio-button (click)="setValue('role', 'admin')" name="role" class="example-margin" value="1">Admin</mat-radio-button>
+                  </mat-radio-group>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="submit()">Tạo mới
+                    <i class="fa fa-spinner fa-spin m-r-5" *ngIf="loading"></i>
+                </button>
+                <button class="ml-2" mat-raised-button (click)="navigateToList()">Huỷ
+
+                </button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

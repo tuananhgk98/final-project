@@ -62,8 +62,14 @@ export class LoginComponent {
       this.loginService.register(body).pipe(finalize(() => this.loading = false)).subscribe(async payload => {
         if (payload.ok) {
           this.storeService.set('user', payload.data);
-          await this.router.navigate(['/']);
+         if(payload.data.role === 'user'){
+          await this.router.navigateByUrl('/pages/course');
           this.snackBar.open(`Xin chào ${payload.data.name}`, 'Bỏ qua', { duration: 3000 });
+         }
+         if(payload.data.role === 'admin'){
+          await this.router.navigateByUrl('/admin/course');
+          this.snackBar.open(`Xin chào ${payload.data.name}`, 'Bỏ qua', { duration: 3000 });
+         }
         }
       });
     });

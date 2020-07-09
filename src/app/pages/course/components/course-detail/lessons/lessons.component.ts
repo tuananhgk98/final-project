@@ -33,6 +33,7 @@ export class LessonsComponent implements OnInit {
   userId: string;
   user: any;
   done: string[] = [];
+  viewNote: string[] = [];
   enableNextLesson: boolean;
   editorOptions = { theme: 'vs-dark', language: 'javascript' };
   testCase = [
@@ -146,9 +147,14 @@ export class LessonsComponent implements OnInit {
   }
 
   do(exId, answer) {
-    this.done.push(exId);
-    const ex = this.exList.find(i => i._id === exId);
-    
+    if (!this.done.includes(exId)) {
+      this.done.push(exId);
+      const ex = this.exList.find(i => i._id === exId);
+    }
+  }
+
+  showNote(exId: string) {
+    this.viewNote.push(exId);
   }
 
 }

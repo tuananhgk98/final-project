@@ -10,20 +10,20 @@
                 (click)="joinCourse(course?._id)">Tham gia</button>
 
             <button style="width : 140px" mat-raised-button color="primary"
-                *ngIf="getCourseInLearned(course?._id) && course?.num === 1 && currentLearnedCourse?.lesson?.length !== 0 && getCourseInLearned(courseList[0]?._id)?.lesson?.length === 0"
+                *ngIf="getCourseInLearned(course?._id) && course?.num === 1 && getCourseInLearned(courseList[0]?._id)?.lesson?.length === 0"
                 (click)="joinCourse(course?._id)">Tham gia</button>
 
                 <button style="width : 140px" mat-raised-button color="primary"
                 *ngIf="getCourseInLearned(course?._id) && currentLearnedCourse?.lesson?.length === 0 && getCourseInLearned(course?._id)?.lesson?.length === 0"
                 (click)="joinCourse(course?._id)">Tham gia</button>
 
-            <!-- <button style="width : 140px" mat-raised-button color="primary"
+             <!-- <button style="width : 140px" mat-raised-button color="primary"
                 *ngIf="!getCourseInLearned(course?._id) && course?._id === isTrueNextCourseId && currentLearnedCourse?.lesson?.length !== 0 && currentLearnedCourse?.lesson?.length < getCourse(currentCourseId)?.lessonCount"
                 (click)="joinCourse(course?._id)">
-                Tham gia</button> -->
+                Tham gia</button>  -->
 
                 <button style="width : 140px" mat-raised-button color="primary"
-                *ngIf="!getCourseInLearned(course?._id) && course?._id === isTrueNextCourseId && currentLearnedCourse?.lesson?.length !== 0 && currentLearnedCourse?.lesson?.length == getCourse(currentCourseId)?.lessonCount"
+                *ngIf="!getCourseInLearned(course?._id) && course?._id === isTrueNextCourseId && currentLearnedCourse?.lesson?.length !== 0 && currentLearnedCourse?.lesson?.length === getCourse(currentCourseId)?.lessonCount"
                 (click)="joinCourse(course?._id)">
                 Tham gia</button>
 

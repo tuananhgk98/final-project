@@ -12,6 +12,22 @@
                 width="40px" height="40px" />
             <p>Thinh Pham</p>
         </div>
+        <!-- <div class="d-flex justify-content-end">
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <input type="text"
+                         placeholder="Tìm kiếm bài học"
+                         matInput
+                         [formControl]="searchControl"
+                         [matAutocomplete]="auto">
+                  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option?.name">
+                      {{option?.name}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+        </div> -->
     </div>
     <div class="course">
         <h4>Bài học</h4>
@@ -22,24 +38,27 @@
                     {{lesson?.content}}
                 </p>
                 <div *ngIf="user && user.learned">
-                    <button style="width : 140px" mat-raised-button color="primary" *ngIf="!user?.learned[course?.num -1]?.lesson?.includes(lesson?._id) && lesson?.num === 0"
+                    <button style="width : 140px" mat-raised-button color="primary"
+                        *ngIf="!user?.learned[course?.num -1]?.lesson?.includes(lesson?._id) && lesson?.num === 0"
                         routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
                         <span>Bắt đầu</span>
                     </button>
-                   <button style="width : 140px" mat-raised-button color="primary" *ngIf="lesson?._id === isTrueNextLessonId"
-                    routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
-                    <span>Bắt đầu</span>
-                  </button>
-                    <button style="width : 140px" mat-stroked-button color="primary" *ngIf="user?.learned[course?.num -1]?.lesson?.includes(lesson?._id)"
+                    <button style="width : 140px" mat-raised-button color="primary"
+                        *ngIf="lesson?._id === isTrueNextLessonId"
+                        routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
+                        <span>Bắt đầu</span>
+                    </button>
+                    <button style="width : 140px" mat-stroked-button color="primary"
+                        *ngIf="user?.learned[course?.num -1]?.lesson?.includes(lesson?._id)"
                         routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
                         <span>Xem lại</span>
                     </button>
-                 <button style="width : 140px" mat-raised-button color="primary"
+                    <button style="width : 140px" mat-raised-button color="primary"
                         *ngIf="!user?.learned[course?.num -1]?.lesson?.includes(lesson?._id) && lesson?.num !== 0 && lesson?._id !== isTrueNextLessonId"
                         [disabled]="!user?.learned[course?.num -1]?.lesson?.includes(lesson?._id) && lesson?._id !== isTrueNextLessonId"
                         routerLink="/pages/course/{{course?._id}}/lesson/{{lesson?._id}}">
                         <span>Chưa mở</span>
-                    </button> 
+                    </button>
                 </div>
             </div>
         </div>

@@ -1,9 +1,6 @@
 <div class="user">
   <img [src]="user?.imageUrl" alt="" width="100%" [matMenuTriggerFor]="menu">
   <mat-menu #menu="matMenu">
-    <button mat-menu-item style="outline: none;" routerLink="/pages/my-info">
-      {{user?.name}}
-    </button>
     <button mat-menu-item style="outline: none;" routerLink="/pages/my-info/{{user?._id}}">
       <mat-icon>account_circle</mat-icon> Trang cá nhân
     </button>
